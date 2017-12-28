@@ -1,9 +1,9 @@
 {
-  "name": "React_AutoComplete",
+  "name": "react-autocomplete",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "b": "http-server -g -o -p 8080",
+    "b": "http-server -g -o",
     "w": "webpack-dev-server --inline --hot --config ./webpack.config.dev.js",
     "p": "rm -rf `ls ./public/official/**` && webpack --profile  --progress --config ./webpack.production.config.js"
   },

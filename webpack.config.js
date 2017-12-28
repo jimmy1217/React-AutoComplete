@@ -3,21 +3,20 @@ var Path = require("path");
 //webpack core
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var staticRoute = require('./src/official/route');
 // var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var config = {
     entry: {
         // 共用vendor js
-        vendor: ['react', 'react-dom', 'classnames', 'rc-queue-anim', 'recompose/pure'],
+        vendor: ['react', 'react-dom', 'classnames'],
         // main js
-        app: [Path.resolve(__dirname, "./src/official/app.js")],
+        app: [Path.resolve(__dirname, "./src/app.js")],
     },
     // output bundle
     output: {
         //實體檔案路徑
-        path: Path.resolve(__dirname, "./public/official/"),
+        path: Path.resolve(__dirname, "./public/"),
         // [name]表示以entry的key命名
-        publicPath: "/official/",
+        publicPath: "/",
         filename: "[name].js",
         sourceMapFilename: "[name].bundle.js.map",
         chunkFilename: '[name].[chunkhash:5].chunk.js'
@@ -55,13 +54,7 @@ var config = {
         ]
     },
     babel: {
-        presets: ['es2015', 'stage-0', 'react'],
-        //webpack 1 沒有 tree shake, 折衷一下
-        plugins: [["import", [{
-            "libraryName": "react-router",
-            "libraryDirectory": "lib",
-            "camel2DashComponentName": false
-        }]]]
+        presets: ['es2015', 'stage-0', 'react']
     },
     externals: {},
     plugins: [
@@ -75,28 +68,8 @@ var config = {
         new webpack.optimize.CommonsChunkPlugin( /* chunkName= */ "vendor", /* filename= */ "vendor.js"),
         // css抽離js
         // new ExtractTextPlugin("./css/[name].css")
-    ],
-    resolve: {
-        // require 檔案時的根目錄
-        root: Path.resolve(__dirname, "./"),
-        // import 時指定特定的路徑
-        alias: {
-            modules: Path.join(__dirname, "node_modules"),
-            'assets': Path.join(__dirname, "./public/images/"),
-            'components': Path.join(__dirname, "./src/official/components/"),
-            'route': Path.join(__dirname, "./src/official/route/"),
-            'helpers': Path.join(__dirname, "./src/official/helpers/")
-        },
-        // require 時可不寫 .js
-        extensions: ['', '.js','.css']
-    }
-};
-
-//靜態 page route
-Object.keys(staticRoute).map((page) => {
-    config.plugins.push(
         new HtmlWebpackPlugin({
-            filename: `./../${staticRoute[page]}`,
+            filename: 'index.html',
             template: 'template.html',
             minify: {
                 collapseWhitespace: true,
@@ -108,7 +81,18 @@ Object.keys(staticRoute).map((page) => {
             hash: true,
             cache: false
         })
-    )
-})
+    ],
+    resolve: {
+        // require 檔案時的根目錄
+        root: Path.resolve(__dirname, "./"),
+        // import 時指定特定的路徑
+        alias: {
+            modules: Path.join(__dirname, "node_modules"),
+            'components': Path.join(__dirname, "./src/components/"),
+        },
+        // require 時可不寫 .js
+        extensions: ['', '.js','.css']
+    }
+};
 
 module.exports = config;

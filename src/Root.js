@@ -3,7 +3,7 @@ import { Autocomplete } from 'components';
 
 const Root = () => {
     return (
-        <div>
+        <div className="p-40">
             <Autocomplete />
         </div>
     );

@@ -7,7 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var config = {
     entry: {
         // 共用vendor js
-        vendor: ['react', 'react-dom', 'classnames'],
+        vendor: ['react', 'react-dom', 'classnames','normalize.css'],
         // main js
         app: [Path.resolve(__dirname, "./src/app.js")],
     },

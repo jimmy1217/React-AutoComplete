@@ -146,7 +146,7 @@ class AutoComplete extends Component {
     });
   }
   render() {
-    const { className, filterKey, placeholder, emptyText } = this.props;
+    const { className, filterKey, placeholder, emptyText, autoFocus } = this.props;
     const { result } = this.state;
     return (
       <div className={classNames("rj_autocompleteContent", { [className]: typeof className != 'undefined' })}>
@@ -156,14 +156,14 @@ class AutoComplete extends Component {
         <input
           onClick={this.toggleVisible}
           ref={el => { this.input = el }}
-          autofocus="autofocus"
+          autoFocus={autoFocus}
           type="text"
           value={this.state.keyword}
           onChange={e => this.handleChange({ keyword: e.target.value, listVisible: !!e.target.value.length })}
           onKeyDown={this.indexSelected}
           className="rj_autocomplete"
           placeholder={placeholder} />
-        <hr/>
+        <hr />
         <hr className="focus-border" />
         <div
           className={classNames("overlayCancel", { hidden: !this.state.listVisible })}

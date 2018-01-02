@@ -60,8 +60,6 @@ var config = {
     plugins: [
         // 告訴webpack看到字串自動require指定module
         new webpack.ProvidePlugin({
-            "React": "react",
-            "ReactDOM": "react-dom",
             "classNames": "classnames"
         }),
         // common file

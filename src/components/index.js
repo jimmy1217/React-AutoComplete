@@ -1,2 +1,3 @@
 import Autocomplete from './Autocomplete';
-export { Autocomplete };
+import Example from './Example';
+export { Autocomplete, Example };

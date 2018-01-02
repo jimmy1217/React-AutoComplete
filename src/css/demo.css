@@ -1,7 +1,30 @@
-html, body, #root {
-  height:100%;
+@import './_var';
+@import './_font';
+@import './_oocss';
+html,
+body,
+#root {
+    height: 100%;
+}
+
+body {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-size: 13pt;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .p-40 {
-  padding: 40px;
+    padding: 40px;
+}
+
+.example {
+  padding-right:10px;
+}
+
+pre {
+  overflow: scroll;
+  color:#666;
+  line-height: 25px;
+  padding:10px;
 }

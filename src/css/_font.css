@@ -1,0 +1,93 @@
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.5;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.text-light-black {
+    color: $light-black;
+}
+
+.text-green {
+    color: $deep-green;
+}
+
+.text-grey {
+    color: $deep-grey;
+}
+
+.italic {
+    font-style: italic;
+}
+
+
+/* ------------------ basic ------------------ */
+
+
+/* 大標 */
+
+h1 {
+    font-size: 8vw;
+    @media screen and (min-width: $screen-md-min) {
+        font-size: 46px;
+    }
+}
+
+
+/* 中標 */
+
+h2 {
+    font-size: 8vw;
+    @media screen and (min-width: $screen-md-min) {
+        font-size:40px;
+    }
+}
+
+h3 {
+    font-size: 5vw;
+    @media screen and (min-width: $screen-md-min) {
+        font-size:24px;
+    }
+}
+
+h4 {
+    font-size: 1.6rem;
+    @media screen and (min-width: $screen-md-min) {
+        font-size:20px;
+    }
+}
+
+h5 {
+    font-size: 4vw;
+    @media screen and (min-width: $screen-md-min) {
+        font-size:18px;
+    }
+}
+
+h6 {
+    font-size: 16px;
+}
+
+p,
+.p {
+    font-size: 2.8vw;
+    font-weight: 400;
+    margin: 0;
+    @media screen and (min-width: $screen-md-min) {
+        font-size: 14px;
+    }
+    &.small {
+        font-size: 12px;
+    }
+}
+
+small {
+    font-size: 12px;
+}

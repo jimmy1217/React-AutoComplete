@@ -16,7 +16,7 @@ var config = {
         //實體檔案路徑
         path: Path.resolve(__dirname, "./public/"),
         // [name]表示以entry的key命名
-        publicPath: "/",
+        publicPath: "./",
         filename: "[name].js",
         sourceMapFilename: "[name].bundle.js.map",
         chunkFilename: '[name].[chunkhash:5].chunk.js'

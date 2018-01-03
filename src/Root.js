@@ -8,7 +8,7 @@ const fakeDataObj1 = {
     test5: { name: "strawberry", fruit: "草莓E" },
     test6: { name: "wax apple", fruit: "蓮霧F" },
     test7: { name: "blueberry", fruit: "藍莓G" },
-    test7: { name: "mango", fruit: "芒果H" }
+    test8: { name: "mango", fruit: "芒果H" }
 };
 
 const fakeDataArr1 = [
@@ -19,7 +19,7 @@ const fakeDataArr1 = [
     { name: "strawberry", fruit: "草莓E", _id: "test5" },
     { name: "wax apple", fruit: "蓮霧F", _id: "test6" },
     { name: "blueberry", fruit: "藍莓G", _id: "test7" },
-    { name: "mango", fruit: "芒果H", _id: "test7" }
+    { name: "mango", fruit: "芒果H", _id: "test8" }
 ]
 
 

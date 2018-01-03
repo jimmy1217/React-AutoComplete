@@ -15,13 +15,6 @@ class AutoComplete extends Component {
   componentWillMount() {
     this.searchResult()
   }
-  componentDidMount() {
-    if (this.props.autoFocus) {
-      setTimeout(() => {
-        this.input.focus();
-      }, 300);
-    }
-  }
   componentWillReceiveProps(nextProps) {
     if (JSON.stringify(this.props.data) !== JSON.stringify(nextProps.data)) {
       this.setState({
@@ -155,7 +148,6 @@ class AutoComplete extends Component {
         </div>
         <input
           onClick={this.toggleVisible}
-          ref={el => { this.input = el }}
           autoFocus={autoFocus}
           type="text"
           value={this.state.keyword}

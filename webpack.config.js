@@ -3,7 +3,6 @@ var Path = require("path");
 //webpack core
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 // var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var config = {
     entry: {
@@ -79,10 +78,6 @@ var config = {
             },
             hash: true,
             cache: false
-        }),
-        new ScriptExtHtmlWebpackPlugin({
-            sync: 'vendor.js',
-            defaultAttribute: 'async'
         })
     ],
     resolve: {

@@ -81,7 +81,7 @@ var config = {
             cache: false
         }),
         new ScriptExtHtmlWebpackPlugin({
-            inline: 'vendor.js',
+            sync: 'vendor.js',
             defaultAttribute: 'async'
         })
     ],

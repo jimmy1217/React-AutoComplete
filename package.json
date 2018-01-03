@@ -5,7 +5,8 @@
   "scripts": {
     "b": "http-server -g -o",
     "w": "webpack-dev-server --inline --hot --config ./webpack.config.dev.js",
-    "p": "rm -rf `ls ./public/official/**` && webpack --profile  --progress --config ./webpack.production.config.js"
+    "p": "rm -rf `ls ./public/official/**` && webpack --profile  --progress --config ./webpack.production.config.js",
+    "gh": "git subtree push --prefix public origin gh-pages"
   },
   "dependencies": {
     "normalize.css": "^7.0.0",

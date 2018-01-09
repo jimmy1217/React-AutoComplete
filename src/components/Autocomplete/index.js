@@ -1,1 +1,3 @@
-export default from './Autocomplete';
+// @flow
+import Autocomplete from './Autocomplete';
+export default Autocomplete;

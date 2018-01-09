@@ -7,7 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var config = {
     entry: {
         // 共用vendor js
-        vendor: ['react', 'react-dom', 'classnames','normalize.css'],
+        vendor: ['react', 'react-dom', 'classnames', 'normalize.css'],
         // main js
         app: [Path.resolve(__dirname, "./src/app.js")],
     },
@@ -54,7 +54,11 @@ var config = {
         ]
     },
     babel: {
-        presets: ['es2015', 'stage-0', 'react']
+        presets: ['es2015', 'stage-0', 'react'],
+        "plugins": [
+            ["transform-flow-strip-types"],
+            ["transform-runtime"]
+        ]
     },
     externals: {},
     plugins: [
@@ -89,7 +93,7 @@ var config = {
             'components': Path.join(__dirname, "./src/components/"),
         },
         // require 時可不寫 .js
-        extensions: ['', '.js','.css']
+        extensions: ['', '.js', '.css']
     }
 };
 

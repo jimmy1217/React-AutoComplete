@@ -1,3 +1,5 @@
-import Autocomplete from './Autocomplete';
-import Example from './Example';
-export { Autocomplete, Example };
+import Autocomplete from './Autocomplete'
+import Dropdown from './Dropdown'
+import Example from './Example'
+
+export { Autocomplete, Dropdown, Example }

@@ -3,13 +3,17 @@ import * as React from 'react'
 import './style.css'
 
 type Props = {
+  type: string,             // 可為 autocomplete 或 dropdown
+  disabled: boolean,        // 是否 disabled
+  clickReset: boolean,      // 每次click 時,是否自動reset velue
   className: ?string,       // 最外層預設.rj_autocompleteContent, 額外自訂className
   emptyText: string,        // 查無結果時字串
   placeholder: string,      // 自定義placeholder
   filterKey: string,        // 搜尋依照哪個key值
+  searchAddon: any,         // 前置 icon (autocomplete) 或 後置icon (dropdown)
   autoFocus: boolean,       // 是否autoFocus
   setValue: boolean,        // 選定值後是否帶入input
-  keys: ?string,      // 回傳依照obj下哪個key 值, 若為null 則預設直接回傳object 本身key值
+  keys: ?string,            // 回傳依照obj下哪個key 值, 若為null 則預設直接回傳object 本身key值
   data: any,                // 主要資料來源,支援Object 或 Array
   onChange: string | number,// 選定之後的callback
 }
@@ -23,9 +27,13 @@ type State = {
 
 class AutoComplete extends React.Component<Props, State> {
   static defaultProps = {
+    type: 'autocomplete',
+    disabled: false,
+    clickReset: false,
     emptyText: '查無結果',
     placeholder: '請搜尋想找的項目',
     filterKey: 'name',
+    searchAddon: <span className="defaultSearch">&#9906;</span>,
     autoFocus: false,
     setValue: true,
     keys: null,
@@ -67,9 +75,17 @@ class AutoComplete extends React.Component<Props, State> {
    * 點擊input 顯示下拉項目
    */
   toggleVisible = () => {
-    if (!this.state.listVisible) {
+    if (!this.state.listVisible && !this.props.disabled) {
+      const defaultClickSetting = this.props.clickReset ? {
+        keyword: "",
+        result: this.props.data,
+      } : {}
+      
       this.setState({
-        listVisible: !this.state.listVisible,
+        ...defaultClickSetting,
+        listVisible: !this.state.listVisible
+      }, () => {
+        this.resultList.scrollTop = 0;
       })
     }
   }
@@ -91,9 +107,9 @@ class AutoComplete extends React.Component<Props, State> {
     /**
      * 使用state 下 keyword 與 props.data 做比對
      */
-    const { data, filterKey } = this.props
+    const { data, filterKey, type } = this.props
     let active = null // 鍵盤輸入的預設key
-    const result = this.state.keyword.trim().length
+    const result = this.state.keyword.trim().length && type === 'autocomplete'
       ? Object.keys(data).reduce((resultObj, key) => {
         if (data[key][filterKey].toUpperCase().indexOf(this.state.keyword.trim().toUpperCase()) > -1) {
           resultObj[key] = data[key]
@@ -199,27 +215,33 @@ class AutoComplete extends React.Component<Props, State> {
   }
   render() {
     const {
+      type,
+      disabled,
       className,
       filterKey,
       placeholder,
       emptyText,
       autoFocus,
+      searchAddon
     } = this.props
     const { result } = this.state
     return (
       <div className={classNames('rj_autocompleteContent', { [className]: typeof className !== 'undefined' })}>
-        <div className="fl_center fw-900">
-          <span>&#9906;</span>
+        <div className={classNames("icon_addon fw-900", { hidden: type === 'dropdown' })}>
+          {searchAddon}
         </div>
         <input
           onClick={this.toggleVisible}
           autoFocus={autoFocus}
           type="text"
           value={this.state.keyword}
+          readOnly={type === 'dropdown'}
+          disabled={disabled}
           onChange={e => this.handleChange({ keyword: e.target.value })}
           onKeyDown={this.indexSelected}
           className="rj_autocomplete"
           placeholder={placeholder} />
+        <div className={classNames("icon_addon fw-900 mr-10", { hidden: type !== 'dropdown' })}>{searchAddon}</div>
         <hr />
         <hr className="focus-border" />
         <div

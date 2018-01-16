@@ -1,5 +1,5 @@
 import React from 'react';
-import { Autocomplete, Example } from 'components';
+import { Autocomplete, Dropdown, Example } from 'components';
 const fakeDataObj1 = {
     test1: { name: "apple", fruit: "蘋果A" },
     test2: { name: "banana", fruit: "香蕉B" },
@@ -274,6 +274,82 @@ ReactDOM.render(
                     emptyText="自己定義查詢不到的結果"
                 />
             </Example>
+            <Example
+            title="Alway Reset Value"
+            code={`import React from 'react';
+import { Autocomplete } from 'components';
+
+const fakeDataArr1 = [
+{ name: "apple", fruit: "蘋果A", _id: "test1" },
+{ name: "banana", fruit: "香蕉B", _id: "test2" },
+{ name: "orange", fruit: "橘子C", _id: "test3" },
+{ name: "tomato", fruit: "番茄D", _id: "test4" },
+{ name: "strawberry", fruit: "草莓E", _id: "test5" },
+{ name: "wax apple", fruit: "蓮霧F", _id: "test6" },
+{ name: "blueberry", fruit: "藍莓G", _id: "test7" },
+{ name: "mango", fruit: "芒果H", _id: "test8" }
+];
+
+const Root = () => {
+return (
+    <div>
+        <Autocomplete 
+            data={fakeDataArr1}
+            clickReset={true}
+            placeholder="Alway reset value"
+            keys="_id"
+        />
+    </div>
+);
+};
+
+ReactDOM.render(
+<Root/>,
+document.getElementById("root")
+);`}>
+            <Autocomplete
+                data={fakeDataArr1}
+                clickReset={true}
+                placeholder="每次點擊時清空項目"
+                keys="_id"
+            />
+        </Example>
+            <Example
+            title="Dropdown"
+            code={`import React from 'react';
+import { Dropdown } from 'components';
+
+const fakeDataArr1 = [
+{ name: "apple", fruit: "蘋果A", _id: "test1" },
+{ name: "banana", fruit: "香蕉B", _id: "test2" },
+{ name: "orange", fruit: "橘子C", _id: "test3" },
+{ name: "tomato", fruit: "番茄D", _id: "test4" },
+{ name: "strawberry", fruit: "草莓E", _id: "test5" },
+{ name: "wax apple", fruit: "蓮霧F", _id: "test6" },
+{ name: "blueberry", fruit: "藍莓G", _id: "test7" },
+{ name: "mango", fruit: "芒果H", _id: "test8" }
+];
+
+const Root = () => {
+return (
+<div>
+    <Dropdown 
+        data={fakeDataArr1}
+        placeholder="Dropdown"
+    />
+</div>
+);
+};
+
+ReactDOM.render(
+<Root/>,
+document.getElementById("root")
+);`}>
+            <Dropdown
+                data={fakeDataArr1}
+                placeholder="Dropdown"
+            />
+        </Example>
         </div>
     );
 };

@@ -208,7 +208,7 @@ class AutoComplete extends React.Component<Props, State> {
           autoFocus={autoFocus}
           type="text"
           value={this.state.keyword}
-          onChange={e => this.handleChange({ keyword: e.target.value, listVisible: !!e.target.value.length })}
+          onChange={e => this.handleChange({ keyword: e.target.value })}
           onKeyDown={this.indexSelected}
           className="rj_autocomplete"
           placeholder={placeholder} />

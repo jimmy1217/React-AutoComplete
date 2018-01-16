@@ -1,7 +1,7 @@
 {
-  "name": "react-autocomplete",
+  "name": "preact-autocomplete",
   "version": "0.0.1",
-  "private": true,
+  "author": "jimmy <jimmy741217@gmail.com>",
   "scripts": {
     "b": "http-server -g -o",
     "w": "webpack-dev-server --inline --hot --config ./webpack.config.dev.js",

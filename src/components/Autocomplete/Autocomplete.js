@@ -3,15 +3,15 @@ import * as React from 'react'
 import './style.css'
 
 type Props = {
-  className: ?string,
-  emptyText: string,
-  placeholder: string,
-  filterKey: string,
-  autoFocus: boolean,
-  setValue: boolean,
-  keys: string | null,
-  data: any,
-  onChange: string | number,
+  className: ?string,       // 最外層預設.rj_autocompleteContent, 額外自訂className
+  emptyText: string,        // 查無結果時字串
+  placeholder: string,      // 自定義placeholder
+  filterKey: string,        // 搜尋依照哪個key值
+  autoFocus: boolean,       // 是否autoFocus
+  setValue: boolean,        // 選定值後是否帶入input
+  keys: string | null,      // 回傳依照obj下哪個key 值, 若為null 則預設直接回傳object 本身key值
+  data: any,                // 主要資料來源,支援Object 或 Array
+  onChange: string | number,// 選定之後的callback
 }
 
 type State = {
@@ -25,10 +25,10 @@ class AutoComplete extends React.Component<Props, State> {
   static defaultProps = {
     emptyText: '查無結果',
     placeholder: '請搜尋想找的項目',
-    filterKey: 'name', // 搜尋依照哪個key值
+    filterKey: 'name',
     autoFocus: false,
     setValue: true,
-    keys: null, // 回傳依照obj下哪個key 值, 若為null 則直接回傳object key
+    keys: null,
     data: {
       test1: { name: 'apple', fruit: '蘋果' },
       test2: { name: 'banana', fruit: '香蕉' },
@@ -39,7 +39,9 @@ class AutoComplete extends React.Component<Props, State> {
       test7: { name: 'blueberry', fruit: '藍莓' },
       test8: { name: 'mango', fruit: '芒果' },
     },
-    onChange: (value: string | number) => { console.log(`callback value is ${value}`) },
+    onChange: (value: string | number) => { 
+      console.log(`callback value is ${value}`) 
+    },
   };
   constructor(props: Props) {
     super(props)
@@ -71,6 +73,7 @@ class AutoComplete extends React.Component<Props, State> {
       })
     }
   }
+
   /**
    * 輸入關鍵字時的onChange
    */
@@ -104,6 +107,7 @@ class AutoComplete extends React.Component<Props, State> {
       keyboardSelect: active,
     })
   }
+
   /**
    *  滑鼠hover 時
    */
@@ -112,6 +116,7 @@ class AutoComplete extends React.Component<Props, State> {
       keyboardSelect: index,
     })
   }
+
   /**
    *  鍵盤控制區塊
    */
@@ -167,6 +172,7 @@ class AutoComplete extends React.Component<Props, State> {
       })
     }
   }
+
   /**
    * 選定選項後行為
    */

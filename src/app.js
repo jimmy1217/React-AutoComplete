@@ -4,7 +4,9 @@ import Root from './Root'
 
 import './css/demo'
 
-ReactDOM.render(
-    <Root/>,
-    document.getElementById("root")
-)
+setTimeout(()=> {
+    ReactDOM.render(
+        <Root/>,
+        document.getElementById("root")
+    )    
+}, 800)

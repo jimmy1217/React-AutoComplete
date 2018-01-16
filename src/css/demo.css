@@ -27,18 +27,51 @@ body {
         background: #10e8a6;
         background: linear-gradient(135deg, #10e8a6 1%,#9bcacc 100%);
         padding:20px 20px 40px 20px;
-        margin:-10px -10px 10px -10px;
+        margin:-10px -10px 40px -10px;
         @media screen and (min-width: $screen-sm-min) {
             background: linear-gradient(135deg, #10e8a6 1%,#1ea3aa 100%);
             text-align: center;
             height:130px;    
-            padding:40px;
-            margin:-40px -40px 10px -40px;
+            padding:40px 40px 80px 40px;
+            margin:-40px -40px 80px -40px;
         }
     }
     .example-title {
         border-top:2px solid $light-green;
         color:$light-green;
+    }
+    .table-api{
+        width: 100%;
+        overflow-x: scroll;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border:1px solid #eee;
+            padding:20px 10px;
+            @media screen and (max-width: $screen-sm-min) {
+                &:nth-child(4){
+                    display: none;
+                }
+            }
+        }
+        th {
+            background-color:$light-green;
+            color:#fff;
+            
+        }
+        td {
+            color:#666;
+            font-size: 13px;
+            line-height: 18px;
+            pre {
+                overflow: visible;
+                line-height: 18px;
+                font-size: 13px;
+                padding:0;
+            }
+        }
     }
 }
 

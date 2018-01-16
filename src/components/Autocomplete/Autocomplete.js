@@ -37,16 +37,10 @@ class AutoComplete extends React.Component<Props, State> {
     autoFocus: false,
     setValue: true,
     keys: null,
-    data: {
-      test1: { name: 'apple', fruit: '蘋果' },
-      test2: { name: 'banana', fruit: '香蕉' },
-      test3: { name: 'orange', fruit: '橘子' },
-      test4: { name: 'tomato', fruit: '番茄' },
-      test5: { name: 'strawberry', fruit: '草莓' },
-      test6: { name: 'wax apple', fruit: '蓮霧' },
-      test7: { name: 'blueberry', fruit: '藍莓' },
-      test8: { name: 'mango', fruit: '芒果' },
-    },
+    data: [
+      { name: 'apple', fruit: '蘋果' }, 
+      { name: 'banana', fruit: '香蕉' }
+    ],
     onChange: (value: string | number) => {
       console.log(`callback value is ${value}`)
     },

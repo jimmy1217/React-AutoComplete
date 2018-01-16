@@ -29,8 +29,8 @@ const Root = () => {
                 <h1 className="text-white fw-100">React AutoComplete</h1>
                 <h5 className="text-white fw-400 ls-1">更輕 • 更小 • 更直覺的 Components</h5>
             </div>
-            
-            
+
+
             <Example
                 title="Basic Search"
                 code={`import React from 'react';
@@ -259,8 +259,8 @@ ReactDOM.render(<Root/>,document.getElementById("root"));`}>
                 />
             </Example>
             <Example
-            title="Alway Reset Value"
-            code={`import React from 'react';
+                title="Alway Reset Value"
+                code={`import React from 'react';
 import { Autocomplete } from 'components';
 
 const fakeDataArr1 = [
@@ -288,16 +288,16 @@ const Root = () => {
 };
 
 ReactDOM.render(<Root/>,document.getElementById("root"));`}>
-            <Autocomplete
-                data={fakeDataArr1}
-                clickReset={true}
-                placeholder="每次點擊時清空項目"
-                keys="_id"
-            />
-        </Example>
+                <Autocomplete
+                    data={fakeDataArr1}
+                    clickReset={true}
+                    placeholder="每次點擊時清空項目"
+                    keys="_id"
+                />
+            </Example>
             <Example
-            title="Dropdown"
-            code={`import React from 'react';
+                title="Dropdown"
+                code={`import React from 'react';
 import { Dropdown } from 'components';
 
 const fakeDataArr1 = [
@@ -323,11 +323,110 @@ const Root = () => {
 };
 
 ReactDOM.render(<Root/>,document.getElementById("root"));`}>
-            <Dropdown
-                data={fakeDataArr1}
-                placeholder="Dropdown"
-            />
-        </Example>
+                <Dropdown
+                    data={fakeDataArr1}
+                    placeholder="Dropdown"
+                />
+            </Example>
+            <div className="table-api">
+                <table className="">
+                    <tbody>
+                        <tr>
+                            <th>Property</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                        </tr>
+                        <tr>
+                            <td>type</td>
+                            <td>下拉類型,可以為 autocomplete 或 dropdown</td>
+                            <td>String</td>
+                            <td>autocomplete</td>
+                        </tr>
+                        <tr>
+                            <td>disabled</td>
+                            <td>是否禁用</td>
+                            <td>Boolean</td>
+                            <td>false</td>
+                        </tr>
+                        <tr>
+                            <td>clickReset</td>
+                            <td>點擊時是否直接清除value</td>
+                            <td>Boolean</td>
+                            <td>false</td>
+                        </tr>
+                        <tr>
+                            <td>className</td>
+                            <td>最外層的wrap className</td>
+                            <td>String || Null</td>
+                            <td>null</td>
+                        </tr>
+                        <tr>
+                            <td>emptyText</td>
+                            <td>找不到資料時出現的內容</td>
+                            <td>String</td>
+                            <td>查無結果</td>
+                        </tr>
+                        <tr>
+                            <td>placeholder</td>
+                            <td>預設的placeholder</td>
+                            <td>String</td>
+                            <td>請搜尋想找的項目</td>
+                        </tr>
+                        <tr>
+                            <td>filterKey</td>
+                            <td>要過濾的項目key值</td>
+                            <td>String</td>
+                            <td>name</td>
+                        </tr>
+                        <tr>
+                            <td>searchAddon</td>
+                            <td>icon 內容，type 為autocomplete 顯示在前面,為 dropdown 顯示在後面</td>
+                            <td>React.ReactElement</td>
+                            <td><pre>{`<span 
+    className="defaultSearch">
+    &#9906;
+</span>`}</pre></td>
+                        </tr>
+                        <tr>
+                            <td>autoFocus</td>
+                            <td>自動 focus input</td>
+                            <td>Boolean</td>
+                            <td>false</td>
+                        </tr>
+                        <tr>
+                            <td>setValue</td>
+                            <td>選擇項目後是否帶入input 內</td>
+                            <td>Boolean</td>
+                            <td>true</td>
+                        </tr>
+                        <tr>
+                            <td>keys</td>
+                            <td>指定output 的key值,若沒設定直接帶出 Index</td>
+                            <td>String</td>
+                            <td>null</td>
+                        </tr>
+                        <tr>
+                            <td>data</td>
+                            <td>主要資料來源</td>
+                            <td>Array || Object</td>
+                            <td><pre>{`[
+    { name: 'apple', fruit: '蘋果' }, 
+    { name: 'banana', fruit: '香蕉' }
+]`}</pre></td>
+                        </tr>
+                        <tr>
+                            <td>onChange</td>
+                            <td>選定值之後的callback</td>
+                            <td>function(val)</td>
+                            <td><pre>{`(value) => {
+    console.log(\`callback value is \${value}\`)
+}`}</pre></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     );
 };

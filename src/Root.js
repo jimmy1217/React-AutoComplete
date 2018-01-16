@@ -25,7 +25,12 @@ const fakeDataArr1 = [
 const Root = () => {
     return (
         <div className="wrapper">
-            <h1 className="wrapper-title text-white mb-40 fw-100">React AutoComplete</h1>
+            <div className="wrapper-title">
+                <h1 className="text-white fw-100">React AutoComplete</h1>
+                <h5 className="text-white fw-400 ls-1">更輕 • 更小 • 更直覺的 Components</h5>
+            </div>
+            
+            
             <Example
                 title="Basic Search"
                 code={`import React from 'react';

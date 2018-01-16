@@ -24,11 +24,13 @@ body {
     }
     .wrapper-title {
         height:70px;
-        background: #1ea3aa;
-        background: linear-gradient(135deg, #10e8a6 1%,#1ea3aa 100%);
-        padding:30px 20px;
+        background: #10e8a6;
+        background: linear-gradient(135deg, #10e8a6 1%,#9bcacc 100%);
+        padding:20px 20px 40px 20px;
         margin:-10px -10px 10px -10px;
         @media screen and (min-width: $screen-sm-min) {
+            background: linear-gradient(135deg, #10e8a6 1%,#1ea3aa 100%);
+            text-align: center;
             height:130px;    
             padding:40px;
             margin:-40px -40px 10px -40px;

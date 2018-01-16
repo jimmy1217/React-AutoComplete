@@ -9,4 +9,4 @@ setTimeout(()=> {
         <Root/>,
         document.getElementById("root")
     )    
-}, 800)
+}, 600)

@@ -1,8 +1,8 @@
 //node path modules
-var Path = require("path");
+var Path = require("path")
 //webpack core
-var webpack = require("webpack");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var webpack = require("webpack")
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 // var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var config = {
     entry: {
@@ -95,6 +95,6 @@ var config = {
         // require 時可不寫 .js
         extensions: ['', '.js', '.css']
     }
-};
+}
 
-module.exports = config;
+module.exports = config

@@ -25,7 +25,7 @@ const fakeDataArr1 = [
 const Root = () => {
     return (
         <div className="wrapper">
-            <h1 className="text-green mb-40 fw-100">React AutoComplete</h1>
+            <h1 className="wrapper-title text-white mb-40 fw-100">React AutoComplete</h1>
             <Example
                 title="Basic Search"
                 code={`import React from 'react';

@@ -19,8 +19,24 @@ body {
 
 .wrapper {
     padding:10px;
-    @media screen and (min-width: $screen-md-min) {
+    @media screen and (min-width: $screen-sm-min) {
         padding:40px;
+    }
+    .wrapper-title {
+        height:70px;
+        background: #1ea3aa;
+        background: linear-gradient(135deg, #10e8a6 1%,#1ea3aa 100%);
+        padding:30px 20px;
+        margin:-10px -10px 10px -10px;
+        @media screen and (min-width: $screen-sm-min) {
+            height:130px;    
+            padding:40px;
+            margin:-40px -40px 10px -40px;
+        }
+    }
+    .example-title {
+        border-top:2px solid $light-green;
+        color:$light-green;
     }
 }
 

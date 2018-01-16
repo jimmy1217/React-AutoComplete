@@ -56,6 +56,10 @@
     .pb-$(i) {
         padding-bottom: $(i)px;
     }
+    .w-$(i){
+        width:$(i)vw;
+        height:$mask-block-height;
+    }
 }
 
 @each $i in (100, 200, 300, 400, 500, 600, 700, 800, 900) {

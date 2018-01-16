@@ -17,9 +17,14 @@ config.devServer = {
         "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
     }
 }
+// dev 不使用 ExtractTextPlugin
+config.plugins.pop()
+config.module.loaders[0].loader = 'style?insertAt=top&-singleton!css?minimize!postcss!'
 // babel loader , 本機時透過react-hot 給 devServer
 delete config.module.loaders[1].loader
 config.module.loaders[1].loaders = ['react-hot-loader/webpack', 'babel-loader']
+
+
 
 // 將靜態image 資源丟給 devServer 
 // config.plugins.push(new CopyWebpackPlugin([ { from: './public/images/', to: './images/' } ]))

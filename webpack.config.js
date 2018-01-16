@@ -3,13 +3,13 @@ var Path = require("path")
 //webpack core
 var webpack = require("webpack")
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-// var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var config = {
     entry: {
         // 共用vendor js
-        vendor: ['react', 'react-dom', 'classnames', 'normalize.css'],
+        vendor: ['react', 'react-dom', 'classnames'],
         // main js
-        app: [Path.resolve(__dirname, "./src/app.js")],
+        app: ['normalize.css', Path.resolve(__dirname, "./src/app.js")],
     },
     // output bundle
     output: {
@@ -25,9 +25,9 @@ var config = {
         loaders: [
             {
                 test: /\.css$/,
-                // loader: ExtractTextPlugin.extract('style?insertAt=top&-singleton', ['css?minimize?sourceMap!autoprefixer?browsers=last 2 version!'])
+                loader: ExtractTextPlugin.extract('style?insertAt=top&-singleton', ['css?minimize!postcss'])
                 // loader: 'style?insertAt=top&-singleton!css?minimize?sourceMap!autoprefixer?browsers=last 2 version!postcss-loader'
-                loader: 'style?insertAt=top&-singleton!css?minimize!postcss!'
+                // loader: 'style?insertAt=top&-singleton!css?minimize!postcss!'
             }, {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -68,8 +68,6 @@ var config = {
         }),
         // common file
         new webpack.optimize.CommonsChunkPlugin( /* chunkName= */ "vendor", /* filename= */ "vendor.js"),
-        // css抽離js
-        // new ExtractTextPlugin("./css/[name].css")
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'template.html',
@@ -82,7 +80,9 @@ var config = {
             },
             hash: true,
             cache: false
-        })
+        }),
+        // css抽離js
+        new ExtractTextPlugin("./css/[name].css"),
     ],
     resolve: {
         // require 檔案時的根目錄

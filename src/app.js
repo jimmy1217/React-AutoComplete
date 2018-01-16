@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Root from './Root';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Root from './Root'
 
-import './css/demo';
+import './css/demo'
 
 ReactDOM.render(
     <Root/>,
     document.getElementById("root")
-);
+)

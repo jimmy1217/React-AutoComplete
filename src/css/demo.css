@@ -33,3 +33,72 @@ pre {
   font-size:16px;
   padding:10px;
 }
+
+// default content placeholder
+@-webkit-keyframes placeHolderShimmer {
+  0% {
+    background-position: -100vw 0
+  }
+  100% {
+    background-position: 100vw 0
+  }
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -100vw 0
+  }
+  100% {
+    background-position: 100vw 0
+  }
+}
+
+.mask-wrapper {
+  background: #fff;
+}
+
+.animated-background {
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #eee;
+  background: linear-gradient(to right, #eee 8%, #dddddd 18%, #eee 33%);
+  background-size: 100vw;
+  height: 110px;
+  position: relative;
+}
+
+.background-masker {
+  background: #fff;
+  position: absolute;
+  &.br {
+      height:10px;
+      width:100%;
+  }
+  &.top-0 {
+      top:0;
+  }
+  &.top-30 {
+      top:30px;
+  }
+  &.top-40 {
+      top:40px;
+  }
+  &.top-70 {
+      top:70px;
+  }
+  &.top-80 {
+      top:80px;
+  }
+  &.right-0 {
+      right:0;
+  }
+  &.left-10 {
+      left:10vw;
+  }
+  &.left-40 {
+      left:40vw;
+  }
+}

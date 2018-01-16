@@ -9,7 +9,7 @@ type Props = {
   filterKey: string,        // 搜尋依照哪個key值
   autoFocus: boolean,       // 是否autoFocus
   setValue: boolean,        // 選定值後是否帶入input
-  keys: string | null,      // 回傳依照obj下哪個key 值, 若為null 則預設直接回傳object 本身key值
+  keys: ?string,      // 回傳依照obj下哪個key 值, 若為null 則預設直接回傳object 本身key值
   data: any,                // 主要資料來源,支援Object 或 Array
   onChange: string | number,// 選定之後的callback
 }
@@ -39,8 +39,8 @@ class AutoComplete extends React.Component<Props, State> {
       test7: { name: 'blueberry', fruit: '藍莓' },
       test8: { name: 'mango', fruit: '芒果' },
     },
-    onChange: (value: string | number) => { 
-      console.log(`callback value is ${value}`) 
+    onChange: (value: string | number) => {
+      console.log(`callback value is ${value}`)
     },
   };
   constructor(props: Props) {
@@ -143,7 +143,9 @@ class AutoComplete extends React.Component<Props, State> {
         ? nowIndex < maxIndex
           ? nowIndex += 1
           : maxIndex
-        : nowIndex > 0 ? nowIndex -= 1 : 0
+        : nowIndex > 0
+          ? nowIndex -= 1
+          : 0
 
       /**
        * 處理上下鍵連動scroll 區塊

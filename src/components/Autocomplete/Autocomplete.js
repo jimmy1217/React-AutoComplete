@@ -3,6 +3,7 @@ import * as React from 'react'
 import './style.css'
 
 type Props = {
+  className: ?string,
   emptyText: string,
   placeholder: string,
   filterKey: string,

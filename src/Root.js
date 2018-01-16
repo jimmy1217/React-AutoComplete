@@ -39,10 +39,7 @@ const Root = () => {
     );
 };
 
-ReactDOM.render(
-    <Root/>,
-    document.getElementById("root")
-);`}>
+ReactDOM.render(<Root/>,document.getElementById("root"));`}>
                 <Autocomplete />
             </Example>
 
@@ -72,10 +69,7 @@ const Root = () => {
     );
 };
 
-ReactDOM.render(
-    <Root/>,
-    document.getElementById("root")
-);`}>
+ReactDOM.render(<Root/>,document.getElementById("root"));`}>
                 <Autocomplete
                     data={fakeDataObj1}
                 />
@@ -106,10 +100,7 @@ const Root = () => {
     );
 };
 
-ReactDOM.render(
-    <Root/>,
-    document.getElementById("root")
-);`}>
+ReactDOM.render(<Root/>,document.getElementById("root"));`}>
                 <Autocomplete
                     data={fakeDataArr1}
                     placeholder="type 'apple' or 'orange' "
@@ -143,10 +134,7 @@ const Root = () => {
     );
 };
 
-ReactDOM.render(
-    <Root/>,
-    document.getElementById("root")
-);`}>
+ReactDOM.render(<Root/>,document.getElementById("root"));`}>
                 <Autocomplete
                     data={fakeDataArr1}
                     filterKey="fruit"
@@ -182,10 +170,7 @@ const Root = () => {
     );
 };
 
-ReactDOM.render(
-    <Root/>,
-    document.getElementById("root")
-);`}>
+ReactDOM.render(<Root/>,document.getElementById("root"));`}>
                 <Autocomplete
                     data={fakeDataArr1}
                     keys="fruit"
@@ -223,10 +208,7 @@ const Root = () => {
     );
 };
 
-ReactDOM.render(
-    <Root/>,
-    document.getElementById("root")
-);`}>
+ReactDOM.render(<Root/>,document.getElementById("root"));`}>
                 <Autocomplete
                     data={fakeDataArr1}
                     placeholder="不設值到 input"
@@ -263,10 +245,7 @@ const Root = () => {
     );
 };
 
-ReactDOM.render(
-    <Root/>,
-    document.getElementById("root")
-);`}>
+ReactDOM.render(<Root/>,document.getElementById("root"));`}>
                 <Autocomplete
                     data={fakeDataArr1}
                     placeholder="打個 'z'吧"
@@ -280,33 +259,30 @@ ReactDOM.render(
 import { Autocomplete } from 'components';
 
 const fakeDataArr1 = [
-{ name: "apple", fruit: "蘋果A", _id: "test1" },
-{ name: "banana", fruit: "香蕉B", _id: "test2" },
-{ name: "orange", fruit: "橘子C", _id: "test3" },
-{ name: "tomato", fruit: "番茄D", _id: "test4" },
-{ name: "strawberry", fruit: "草莓E", _id: "test5" },
-{ name: "wax apple", fruit: "蓮霧F", _id: "test6" },
-{ name: "blueberry", fruit: "藍莓G", _id: "test7" },
-{ name: "mango", fruit: "芒果H", _id: "test8" }
+    { name: "apple", fruit: "蘋果A", _id: "test1" },
+    { name: "banana", fruit: "香蕉B", _id: "test2" },
+    { name: "orange", fruit: "橘子C", _id: "test3" },
+    { name: "tomato", fruit: "番茄D", _id: "test4" },
+    { name: "strawberry", fruit: "草莓E", _id: "test5" },
+    { name: "wax apple", fruit: "蓮霧F", _id: "test6" },
+    { name: "blueberry", fruit: "藍莓G", _id: "test7" },
+    { name: "mango", fruit: "芒果H", _id: "test8" }
 ];
 
 const Root = () => {
-return (
-    <div>
-        <Autocomplete 
-            data={fakeDataArr1}
-            clickReset={true}
-            placeholder="Alway reset value"
-            keys="_id"
-        />
-    </div>
-);
+    return (
+        <div>
+            <Autocomplete 
+                data={fakeDataArr1}
+                clickReset={true}
+                placeholder="Alway reset value"
+                keys="_id"
+            />
+        </div>
+    );
 };
 
-ReactDOM.render(
-<Root/>,
-document.getElementById("root")
-);`}>
+ReactDOM.render(<Root/>,document.getElementById("root"));`}>
             <Autocomplete
                 data={fakeDataArr1}
                 clickReset={true}
@@ -320,31 +296,28 @@ document.getElementById("root")
 import { Dropdown } from 'components';
 
 const fakeDataArr1 = [
-{ name: "apple", fruit: "蘋果A", _id: "test1" },
-{ name: "banana", fruit: "香蕉B", _id: "test2" },
-{ name: "orange", fruit: "橘子C", _id: "test3" },
-{ name: "tomato", fruit: "番茄D", _id: "test4" },
-{ name: "strawberry", fruit: "草莓E", _id: "test5" },
-{ name: "wax apple", fruit: "蓮霧F", _id: "test6" },
-{ name: "blueberry", fruit: "藍莓G", _id: "test7" },
-{ name: "mango", fruit: "芒果H", _id: "test8" }
+    { name: "apple", fruit: "蘋果A", _id: "test1" },
+    { name: "banana", fruit: "香蕉B", _id: "test2" },
+    { name: "orange", fruit: "橘子C", _id: "test3" },
+    { name: "tomato", fruit: "番茄D", _id: "test4" },
+    { name: "strawberry", fruit: "草莓E", _id: "test5" },
+    { name: "wax apple", fruit: "蓮霧F", _id: "test6" },
+    { name: "blueberry", fruit: "藍莓G", _id: "test7" },
+    { name: "mango", fruit: "芒果H", _id: "test8" }
 ];
 
 const Root = () => {
-return (
-<div>
-    <Dropdown 
-        data={fakeDataArr1}
-        placeholder="Dropdown"
-    />
-</div>
-);
+    return (
+        <div>
+            <Dropdown 
+                data={fakeDataArr1}
+                placeholder="Dropdown"
+            />
+        </div>
+    );
 };
 
-ReactDOM.render(
-<Root/>,
-document.getElementById("root")
-);`}>
+ReactDOM.render(<Root/>,document.getElementById("root"));`}>
             <Dropdown
                 data={fakeDataArr1}
                 placeholder="Dropdown"

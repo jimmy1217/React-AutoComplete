@@ -25,8 +25,11 @@ body {
 }
 
 pre {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   overflow: scroll;
   color:#666;
   line-height: 25px;
+  letter-spacing:1px;
+  font-size:16px;
   padding:10px;
 }

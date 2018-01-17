@@ -7,11 +7,10 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var config = {
     entry: {
         // 共用vendor js
-        // vendor: ['react', 'react-dom', 'classnames'],
+        vendor: ['react', 'react-dom', 'classnames'],
         // main js
         app: ['normalize.css', Path.resolve(__dirname, "./src/app.js")],
         // autocomplete css 單獨拉出
-        style:[Path.resolve(__dirname, "./src/components/style.css")]
     },
     // output bundle
     output: {
@@ -70,7 +69,7 @@ var config = {
         //     "classNames": "classnames"
         // }),
         // common file 暫時關閉, 讓autocomplete 獨立出來
-        // new webpack.optimize.CommonsChunkPlugin( /* chunkName= */ "vendor", /* filename= */ "vendor.js"),
+        new webpack.optimize.CommonsChunkPlugin( /* chunkName= */ "vendor", /* filename= */ "vendor.js"),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'template.html',

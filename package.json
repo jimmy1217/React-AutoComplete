@@ -12,7 +12,7 @@
     "w": "webpack-dev-server --inline --hot --config ./webpack.config.dev.js",
     "p": "rm -rf `ls ./lib` && webpack --profile  --progress --config ./webpack.production.config.js",
     "gh": "git subtree push --prefix public origin gh-pages",
-    "build": "rm -r ./lib && NODE_ENV=commonjs babel ./src/components/ -d lib && yarn p",
+    "build": "rm -r ./lib && NODE_ENV=commonjs babel ./src/components/ -d lib && postcss src/components/style.css -o lib/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,11 +30,6 @@
     "classnames": "^2.2.3"
   },
   "devDependencies": {
-    "normalize.css": "^7.0.0",
-    "preact": "^8.2.6",
-    "preact-compat": "^3.17.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
     "autoprefixer": "^7.2.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.18.2",
@@ -58,8 +53,14 @@
     "html-webpack-plugin": "^2.30.1",
     "http-server": "^0.10.0",
     "jsx-loader": "^0.13.2",
+    "normalize.css": "^7.0.0",
+    "postcss-cli": "^4.1.1",
     "postcss-loader": "^2.0.9",
+    "preact": "^8.2.6",
+    "preact-compat": "^3.17.0",
     "precss": "^2.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-hot-loader": "^3.1.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",

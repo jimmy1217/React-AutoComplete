@@ -11,14 +11,14 @@ class Example extends Component {
         const { children, title, code } = this.props;
         return (
             <div className="example pb-40 mb-40">
-                <h3 className="example-title text-white pt-10 pb-10 pl-10 ls-2 mb-15">
+                <h5 className="example-title text-white pt-10 pb-10 pl-10 ls-2 mb-15">
                     {title}
                     <span className="pull-right pr-10 cursorPointer fw-900" onClick={()=>{
                         this.setState({
                             collapse:!this.state.collapse
                         });
                     }}>&#10094;/&#10095;</span>
-                </h3>
+                </h5>
                 {children}
                 <div className={classNames("code", { hidden: this.state.collapse })}>
                     <pre>

@@ -1,1 +1,0 @@
-# React Autocomplete Component

@@ -1,7 +1,0 @@
-[ignore]
-[include]
-<PROJECT_ROOT>/node_modules/
-[libs]
-[lints]
-[options]
-[strict]

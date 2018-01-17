@@ -28,7 +28,7 @@ const Root = () => {
     return (
         <div className="wrapper">
             <div className="wrapper-title">
-                <h1 className="text-white fw-100">React AutoComplete</h1>
+                <h1 className="text-white fw-100">Preact AutoComplete</h1>
                 <h5 className="text-white fw-400 ls-1">更輕 • 更小 • 更直覺的 Components</h5>
             </div>
 
@@ -36,7 +36,7 @@ const Root = () => {
             <Example
                 title="Basic Search"
                 code={`import React from 'react';
-import { Autocomplete } from 'components';
+import { Autocomplete } from 'preact-autocomplete';
 
 const Root = () => {
     return (
@@ -53,7 +53,7 @@ ReactDOM.render(<Root/>,document.getElementById("root"));`}>
             <Example
                 title="Search From Object"
                 code={`import React from 'react';
-import { Autocomplete } from 'components';
+import { Autocomplete } from 'preact-autocomplete';
 
 const fakeDataObj1 = {
     test1: { name: "apple", fruit: "蘋果A" },
@@ -84,7 +84,7 @@ ReactDOM.render(<Root/>,document.getElementById("root"));`}>
             <Example
                 title="Search From Array"
                 code={`import React from 'react';
-import { Autocomplete } from 'components';
+import { Autocomplete } from 'preact-autocomplete';
 
 const fakeDataArr1 = [
     { name: "apple", fruit: "蘋果A", _id: "test1" },
@@ -116,7 +116,7 @@ ReactDOM.render(<Root/>,document.getElementById("root"));`}>
             <Example
                 title="Custom Filter Key"
                 code={`import React from 'react';
-import { Autocomplete } from 'components';
+import { Autocomplete } from 'preact-autocomplete';
 
 const fakeDataArr1 = [
     { name: "apple", fruit: "蘋果A", _id: "test1" },
@@ -151,7 +151,7 @@ ReactDOM.render(<Root/>,document.getElementById("root"));`}>
             <Example
                 title="Custom Output Key"
                 code={`import React from 'react';
-import { Autocomplete } from 'components';
+import { Autocomplete } from 'preact-autocomplete';
 
 const fakeDataArr1 = [
     { name: "apple", fruit: "蘋果A", _id: "test1" },
@@ -188,7 +188,7 @@ ReactDOM.render(<Root/>,document.getElementById("root"));`}>
             <Example
                 title="Callback value"
                 code={`import React from 'react';
-import { Autocomplete } from 'components';
+import { Autocomplete } from 'preact-autocomplete';
 
 const fakeDataArr1 = [
     { name: "apple", fruit: "蘋果A", _id: "test1" },
@@ -227,7 +227,7 @@ ReactDOM.render(<Root/>,document.getElementById("root"));`}>
             <Example
                 title="Costom No Result"
                 code={`import React from 'react';
-import { Autocomplete } from 'components';
+import { Autocomplete } from 'preact-autocomplete';
 
 const fakeDataArr1 = [
     { name: "apple", fruit: "蘋果A", _id: "test1" },
@@ -263,7 +263,7 @@ ReactDOM.render(<Root/>,document.getElementById("root"));`}>
             <Example
                 title="Alway Reset Value"
                 code={`import React from 'react';
-import { Autocomplete } from 'components';
+import { Autocomplete } from 'preact-autocomplete';
 
 const fakeDataArr1 = [
     { name: "apple", fruit: "蘋果A", _id: "test1" },
@@ -300,7 +300,7 @@ ReactDOM.render(<Root/>,document.getElementById("root"));`}>
             <Example
                 title="Dropdown"
                 code={`import React from 'react';
-import { Dropdown } from 'components';
+import { Dropdown } from 'preact-autocomplete';
 
 const fakeDataArr1 = [
     { name: "apple", fruit: "蘋果A", _id: "test1" },

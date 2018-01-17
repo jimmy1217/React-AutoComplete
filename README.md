@@ -1,4 +1,4 @@
-# Preact-autocomplete [![npm version](https://img.shields.io/npm/v/redux.svg?style=flat-square)](https://www.npmjs.com/package/preact-autocomplete)
+# Preact-autocomplete [![npm version](https://img.shields.io/npm/v/preact-autocomplete.svg?style=flat-square)](https://www.npmjs.com/package/preact-autocomplete)
 一個使用於 autocomplete 或 dropdown 需求的 React component
 
 

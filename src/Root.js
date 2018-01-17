@@ -334,7 +334,7 @@ ReactDOM.render(<Root/>,document.getElementById("root"));`}>
                         <tr>
                             <th>Property</th>
                             <th>Description</th>
-                            <th>Type</th>
+                            <th className="min-w-80">Type</th>
                             <th>Default</th>
                         </tr>
                         <tr>
@@ -382,6 +382,7 @@ ReactDOM.render(<Root/>,document.getElementById("root"));`}>
                         <tr>
                             <td>searchAddon</td>
                             <td>icon 內容，type 為autocomplete 顯示在前面,為 dropdown 顯示在後面</td>
+                            
                             <td>React.ReactElement</td>
                             <td><pre>{`<span 
     className="defaultSearch">

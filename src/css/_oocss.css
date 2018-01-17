@@ -71,6 +71,9 @@
 .clearfix {
     clear: both;
 }
+.min-w-80 {
+    min-width:80px;
+}
 
 
 /**

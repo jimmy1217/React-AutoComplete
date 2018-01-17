@@ -12,7 +12,7 @@
     "w": "webpack-dev-server --inline --hot --config ./webpack.config.dev.js",
     "p": "rm -rf `ls ./lib` && webpack --profile  --progress --config ./webpack.production.config.js",
     "gh": "git subtree push --prefix public origin gh-pages",
-    "build": "rm -r ./lib && NODE_ENV=commonjs babel ./src/components/ -d lib && postcss src/components/style.css -o lib/style.css",
+    "build": "rm -r ./lib && NODE_ENV=commonjs babel ./src/components/ -d lib && postcss src/components/*.css -o lib/*.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -44,6 +44,7 @@
     "compression-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.3.1",
     "css-loader": "^0.23.1",
+    "cssnano": "^3.10.0",
     "eslint": "^4.15.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",

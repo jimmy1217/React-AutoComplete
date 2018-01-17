@@ -2,6 +2,7 @@ var Path = require("path")
 //webpack core
 var webpack = require("webpack")
 var CompressionPlugin = require('compression-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 var config = require('./webpack.config')
 config.plugins.push(
     new webpack.optimize.DedupePlugin()
@@ -38,5 +39,5 @@ config.plugins.push(new CompressionPlugin({
     minRatio: 0.8
 }))
 
-
+config.plugins.push(new CopyWebpackPlugin([ { from: './public/css/style.css', to: './../lib/' } ]))
 module.exports = config;

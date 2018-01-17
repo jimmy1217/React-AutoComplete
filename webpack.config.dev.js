@@ -1,7 +1,7 @@
 //node path modules
 var Path = require("path")
 var config = require('./webpack.config')
-// var CopyWebpackPlugin = require('copy-webpack-plugin');
+
 config.output.publicPath = "http://localhost:8080/"
 config.devtool = 'cheap-module-eval-source-map'
 config.debug = true
@@ -25,7 +25,4 @@ delete config.module.loaders[1].loader
 config.module.loaders[1].loaders = ['react-hot-loader/webpack', 'babel-loader']
 
 
-
-// 將靜態image 資源丟給 devServer 
-// config.plugins.push(new CopyWebpackPlugin([ { from: './public/images/', to: './images/' } ]))
 module.exports = config

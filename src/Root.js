@@ -1,5 +1,7 @@
-import React from 'react';
-import { Autocomplete, Dropdown, Example } from 'components';
+import React from 'react'
+import { Autocomplete, Dropdown } from 'components'
+import { Example } from 'demoComponents'
+
 const fakeDataObj1 = {
     test1: { name: "apple", fruit: "蘋果A" },
     test2: { name: "banana", fruit: "香蕉B" },
@@ -382,7 +384,7 @@ ReactDOM.render(<Root/>,document.getElementById("root"));`}>
                         <tr>
                             <td>searchAddon</td>
                             <td>icon 內容，type 為autocomplete 顯示在前面,為 dropdown 顯示在後面</td>
-                            
+
                             <td>React.ReactElement</td>
                             <td><pre>{`<span 
     className="defaultSearch">

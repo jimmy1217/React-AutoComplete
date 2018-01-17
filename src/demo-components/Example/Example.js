@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames'
 
 class Example extends Component {
     constructor(props, context) {

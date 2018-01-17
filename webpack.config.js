@@ -7,9 +7,11 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var config = {
     entry: {
         // 共用vendor js
-        vendor: ['react', 'react-dom', 'classnames'],
+        // vendor: ['react', 'react-dom', 'classnames'],
         // main js
         app: ['normalize.css', Path.resolve(__dirname, "./src/app.js")],
+        // autocomplete css 單獨拉出
+        style:[Path.resolve(__dirname, "./src/components/style.css")]
     },
     // output bundle
     output: {
@@ -19,7 +21,8 @@ var config = {
         publicPath: "./",
         filename: "[name].js",
         sourceMapFilename: "[name].bundle.js.map",
-        chunkFilename: '[name].[chunkhash:5].chunk.js'
+        chunkFilename: '[name].[chunkhash:5].chunk.js',
+        libraryTarget: "umd"
     },
     module: {
         loaders: [
@@ -63,11 +66,11 @@ var config = {
     externals: {},
     plugins: [
         // 告訴webpack看到字串自動require指定module
-        new webpack.ProvidePlugin({
-            "classNames": "classnames"
-        }),
-        // common file
-        new webpack.optimize.CommonsChunkPlugin( /* chunkName= */ "vendor", /* filename= */ "vendor.js"),
+        // new webpack.ProvidePlugin({
+        //     "classNames": "classnames"
+        // }),
+        // common file 暫時關閉, 讓autocomplete 獨立出來
+        // new webpack.optimize.CommonsChunkPlugin( /* chunkName= */ "vendor", /* filename= */ "vendor.js"),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'template.html',
@@ -78,6 +81,8 @@ var config = {
                 removeScriptTypeAttributes: true,
                 removeStyleLinkTypeAttributes: true
             },
+            // autocomplete 是要單獨抽出,demo 頁不引入
+            excludeChunks:['style'],
             hash: true,
             cache: false
         }),
@@ -91,6 +96,7 @@ var config = {
         alias: {
             modules: Path.join(__dirname, "node_modules"),
             'components': Path.join(__dirname, "./src/components/"),
+            'demoComponents': Path.join(__dirname, "./src/demo-components/"),
         },
         // require 時可不寫 .js
         extensions: ['', '.js', '.css']

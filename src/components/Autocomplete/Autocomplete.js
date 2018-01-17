@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react'
-import './style.css'
+import classNames from 'classnames'
+import './../style.css'
 
 type Props = {
   type: string,             // 可為 autocomplete 或 dropdown

@@ -10,7 +10,7 @@
   "scripts": {
     "b": "./node_modules/.bin/http-server -g -o",
     "w": "webpack-dev-server --inline --hot --config ./webpack.config.dev.js",
-    "p": "rm -rf `ls ./lib` && webpack --profile  --progress --config ./webpack.production.config.js",
+    "p": "webpack --profile  --progress --config ./webpack.production.config.js",
     "gh": "git subtree push --prefix public origin gh-pages",
     "build": "rm -rf ./lib && NODE_ENV=commonjs ./node_modules/.bin/babel ./src/components/ -d lib && ./node_modules/.bin/postcss src/components/*.css -o lib/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"

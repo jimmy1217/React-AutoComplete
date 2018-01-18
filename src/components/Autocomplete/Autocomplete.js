@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react'
 import classNames from 'classnames'
+import { actionSearchResult, actionSetIndex, actionSetValue } from './action'
 import './../style.css'
 
 type Props = {
@@ -39,7 +40,7 @@ class AutoComplete extends React.Component<Props, State> {
     setValue: true,
     keys: null,
     data: [
-      { name: 'apple', fruit: '蘋果' }, 
+      { name: 'apple', fruit: '蘋果' },
       { name: 'banana', fruit: '香蕉' }
     ],
     onChange: (value: string | number) => {
@@ -75,7 +76,7 @@ class AutoComplete extends React.Component<Props, State> {
         keyword: "",
         result: this.props.data,
       } : {}
-      
+
       this.setState({
         ...defaultClickSetting,
         listVisible: !this.state.listVisible
@@ -99,43 +100,28 @@ class AutoComplete extends React.Component<Props, State> {
    *  關鍵字搜尋結果
    */
   searchResult = () => {
-    /**
-     * 使用state 下 keyword 與 props.data 做比對
-     */
-    const { data, filterKey, type } = this.props
-    let active = null // 鍵盤輸入的預設key
-    const result = this.state.keyword.trim().length && type === 'autocomplete'
-      ? Object.keys(data).reduce((resultObj, key) => {
-        if (data[key][filterKey].toUpperCase().indexOf(this.state.keyword.trim().toUpperCase()) > -1) {
-          resultObj[key] = data[key]
-          active = 0
-        }
-        return resultObj
-      }, {})
-      : this.props.data
-    this.setState({
-      result: result,
-      keyboardSelect: active,
-    })
+    const newState = actionSearchResult(this.props, this.state)
+    this.setState(newState)
   }
 
   /**
    *  滑鼠hover 時
    */
-  setIndex = index => (e) => {
-    this.setState({
-      keyboardSelect: index,
-    })
+  setIndex = (index) => {
+    const newState = actionSetIndex(index)
+    this.setState(newState)
   }
 
   /**
    *  鍵盤控制區塊
    */
   indexSelected = (e) => {
+    e.preventDefault()
+
     if (e.keyCode !== 40 && e.keyCode !== 38 && e.keyCode !== 13) {
       return false
     }
-    e.preventDefault()
+
     const { result, keyboardSelect } = this.state
     /**
      *  按下 Enter 邏輯
@@ -190,6 +176,7 @@ class AutoComplete extends React.Component<Props, State> {
    * 選定選項後行為
    */
   setValue(value) {
+    const newState = actionSetValue(this.props, this.state, value)
     // 當按下選項發生什麼事, 是否要寫入keyword
     const {
       data,
@@ -256,7 +243,7 @@ class AutoComplete extends React.Component<Props, State> {
                   ref={el => { this.resultItem = el }}
                   className={classNames('result', { active: this.state.keyboardSelect === i })}
                   onClick={() => this.setValue(lv2Key)}
-                  onMouseOver={this.setIndex(i)}
+                  onMouseOver={() => this.setIndex(i)}
                 >
                   {result[lv2Key][filterKey]}
                 </li>)

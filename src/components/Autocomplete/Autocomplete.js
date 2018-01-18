@@ -80,7 +80,7 @@ class AutoComplete extends React.Component<Props, State> {
         ...defaultClickSetting,
         listVisible: !this.state.listVisible
       }, () => {
-        this.resultList.scrollTop = 0;
+        this.resultList.scrollTop = 0
       })
     }
   }

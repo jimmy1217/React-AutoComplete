@@ -12,7 +12,8 @@
 ## Demo 
 >**[Online example](https://jimmy1217.github.io/React-AutoComplete/)**
 
-![Demo](https://media.giphy.com/media/xULW8KF305sCG1FgYM/giphy.gif)
+<img src="https://giant.gfycat.com/DapperTenderHogget.gif" width="240" >
+
 
 ## 功能涵蓋
 >- 過濾物件、陣列

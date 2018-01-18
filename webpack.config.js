@@ -6,10 +6,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var config = {
     entry: {
-        // 共用vendor js
-        vendor: ['react', 'react-dom', 'classnames'],
+        // 共用vendor js, all css
+        vendor: ['react', 'react-dom', 'classnames', 'normalize.css', Path.resolve(__dirname, "./src/css/demo.css"), Path.resolve(__dirname, "./src/components/style.css")],
         // main js
-        app: ['normalize.css', Path.resolve(__dirname, "./src/app.js")],
+        app: [Path.resolve(__dirname, "./src/app.js")],
     },
     // output bundle
     output: {

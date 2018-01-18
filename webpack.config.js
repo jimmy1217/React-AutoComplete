@@ -10,7 +10,6 @@ var config = {
         vendor: ['react', 'react-dom', 'classnames'],
         // main js
         app: ['normalize.css', Path.resolve(__dirname, "./src/app.js")],
-        // autocomplete css 單獨拉出
     },
     // output bundle
     output: {
@@ -81,7 +80,7 @@ var config = {
                 removeStyleLinkTypeAttributes: true
             },
             // autocomplete 是要單獨抽出,demo 頁不引入
-            excludeChunks:['style'],
+            // excludeChunks:['style'],
             hash: true,
             cache: false
         }),

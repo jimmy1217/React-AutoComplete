@@ -12,7 +12,7 @@
 ## Demo 
 >**[Online example](https://jimmy1217.github.io/React-AutoComplete/)**
 
-<img src="https://giant.gfycat.com/DapperTenderHogget.gif" width="240" >
+<img src="https://giant.gfycat.com/DapperTenderHogget.gif" width="250" >
 
 
 ## 功能涵蓋

@@ -29,7 +29,7 @@ const Root = () => {
         <div className="wrapper">
             <div className="wrapper-title">
                 <h1 className="text-white fw-100">Preact AutoComplete</h1>
-                <h5 className="text-white fw-400 ls-1">更輕 • 更小 • 更直覺的 Components</h5>
+                <h5 className="text-white ls-1">更輕 • 更小 • 更直覺的 Components</h5>
             </div>
 
 

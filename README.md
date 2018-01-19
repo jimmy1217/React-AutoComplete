@@ -6,11 +6,14 @@
 ## 安裝方式
 
 
->```npm install --save preact-autocomplete```
+>```yarn add preact-autocomplete```
 
 
 ## Demo 
 >**[Online example](https://jimmy1217.github.io/React-AutoComplete/)**
+
+<img src="https://giant.gfycat.com/DapperTenderHogget.gif" width="258" >
+
 
 ## 功能涵蓋
 >- 過濾物件、陣列
@@ -27,10 +30,10 @@
 ## 開發方式
 
 >**本機開發 :**  
->**```npm run w```**<br/>
+>**```yarn w```**<br/>
 >**預設於localhost:8080 開啟HMR**
 
 >**本機部署 :**  
->**```npm run build```**<br/>
+>**```yarn build```**<br/>
 >**預設透過babel 放置於/lib/\* 下**
 

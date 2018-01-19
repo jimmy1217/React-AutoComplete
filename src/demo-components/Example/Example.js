@@ -14,7 +14,7 @@ class Example extends Component {
             <div className="example pb-40 mb-40">
                 <h5 className="example-title text-white pt-10 pb-10 pl-10 ls-2 mb-15">
                     {title}
-                    <span className="pull-right pr-10 cursorPointer fw-900" onClick={()=>{
+                    <span className="pull-right pr-10 cursorPointer" onClick={()=>{
                         this.setState({
                             collapse:!this.state.collapse
                         });

@@ -93,7 +93,6 @@ pre {
     padding: 10px;
 }
 
-// default content placeholder
 @-webkit-keyframes placeHolderShimmer {
     0% {
         background-position: -100vw 0

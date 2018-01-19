@@ -6,11 +6,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var config = {
     entry: {
-        // 共用vendor js
-        vendor: ['react', 'react-dom', 'classnames'],
+        // 共用vendor js, all css
+        vendor: ['react', 'react-dom', 'classnames', 'normalize.css', Path.resolve(__dirname, "./src/css/demo.css"), Path.resolve(__dirname, "./src/components/style.css")],
         // main js
-        app: ['normalize.css', Path.resolve(__dirname, "./src/app.js")],
-        // autocomplete css 單獨拉出
+        app: [Path.resolve(__dirname, "./src/app.js")],
     },
     // output bundle
     output: {
@@ -81,7 +80,7 @@ var config = {
                 removeStyleLinkTypeAttributes: true
             },
             // autocomplete 是要單獨抽出,demo 頁不引入
-            excludeChunks:['style'],
+            // excludeChunks:['style'],
             hash: true,
             cache: false
         }),

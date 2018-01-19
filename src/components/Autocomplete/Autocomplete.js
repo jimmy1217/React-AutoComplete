@@ -218,11 +218,7 @@ class AutoComplete extends React.Component<Props, State> {
         <hr className="focus-border" />
         <div
           className={classNames('overlayCancel', { hidden: !this.state.listVisible })}
-          onClick={() => {
-            this.setState({
-              listVisible: false,
-            })
-          }}></div>
+          onClick={() => this.handleChange({ listVisible: false })}></div>
         <div
           ref={el => { this.resultList = el }}
           className={classNames('rj_list', { rj_list_hidden: !this.state.listVisible })}>

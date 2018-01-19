@@ -49,7 +49,6 @@ const Root = () => {
 ReactDOM.render(<Root/>,document.getElementById("root"));`}>
                 <Autocomplete />
             </Example>
-
             <Example
                 title="Search From Object"
                 code={`import React from 'react';
@@ -429,7 +428,6 @@ ReactDOM.render(<Root/>,document.getElementById("root"));`}>
                     </tbody>
                 </table>
             </div>
-
         </div>
     );
 };

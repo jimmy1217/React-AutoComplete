@@ -13,7 +13,7 @@
     "p": "webpack --profile  --progress --config ./webpack.production.config.js",
     "gh": "git subtree push --prefix public origin gh-pages",
     "build": "rm -rf ./lib && NODE_ENV=commonjs ./node_modules/.bin/babel ./src/components/ -d lib && ./node_modules/.bin/postcss src/components/*.css -o lib/style.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.18.2",
     "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.1.0",
     "babel-loader": "^6.2.4",
     "babel-plugin-import": "^1.1.1",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -45,6 +46,7 @@
     "copy-webpack-plugin": "^4.3.1",
     "css-loader": "^0.23.1",
     "cssnano": "^3.10.0",
+    "enzyme": "^3.3.0",
     "eslint": "^4.15.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
@@ -53,6 +55,7 @@
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.30.1",
     "http-server": "^0.10.0",
+    "jest": "^22.1.2",
     "jsx-loader": "^0.13.2",
     "normalize.css": "^7.0.0",
     "postcss-cli": "^4.1.1",
@@ -67,6 +70,11 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
+  },
+  "jest": {
+    "setupFiles": [
+      "./test-env.js"
+    ]
   },
   "author": "jimmy1217",
   "license": "ISC",

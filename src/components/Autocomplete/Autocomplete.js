@@ -5,6 +5,10 @@ import {
   actionInitState,
   receiveUpdateState,
   actionSearchResult,
+  actionOnPressEnter,
+  actionGetNextIndex,
+  actionNeedScroll,
+  actionGetScrollTop,
   actionSetIndex,
   actionSetValue,
   actionOutPutValue,
@@ -13,16 +17,6 @@ import {
 } from './action'
 
 import './../style.css'
-
-/**
- * 資料來源邏輯
- * 資料從外部props.data 進來component
- * willmount 時,         result = props.data (改變控制在外部)
- * 輸入keyword 時有結果,   result = props.data.reduce indexOf 結果 (因為無副作用,故變成控制在內部)
- * 輸入keyword 時無結果,   result = props.data (又變成外部連動內部)
- * propsUpdate 改變時,    result = nextProps.data  (外部連動改變內部)
- * 雖然操作起來好像沒問題, 但改天需拆分開, receive 去 deep equal 總覺得有點多餘
- */
 
 type Props = {
   type: string,                   // 可為 autocomplete 或 dropdown
@@ -73,12 +67,15 @@ class AutoComplete extends React.Component<Props, State> {
     super(props)
     this.state = actionInitState()
   }
+
+  /** init resultData */
   componentWillMount() {
     this.searchResult()
   }
+
+  /** 如果propsUpdate 更新  */
   componentWillReceiveProps(nextProps: Props) {
     if (this.props.propsUpdate !== nextProps.propsUpdate) {
-      //如果propsUpdate 更新 
       const newState = receiveUpdateState(nextProps)
       this.setState(newState)
     }
@@ -126,54 +123,26 @@ class AutoComplete extends React.Component<Props, State> {
       return false
     }
     e.preventDefault()
-    const { result, keyboardSelect } = this.state
-    /**
-     *  按下 Enter 邏輯
-     */
-    if (e.keyCode === 13 && keyboardSelect !== null &&
-      keyboardSelect > -1 && Object.keys(result).length) {
-      const lv2Key = Object.keys(result)[keyboardSelect]
-      this.setValue(lv2Key)
-    } else {
-      /**
-       * 上下鍵計算index 區塊
-       */
-      const maxIndex = Object.keys(result).length - 1
-      let nowIndex = keyboardSelect !== null ? Number(keyboardSelect) : -1
-      const nextIndex = e.keyCode === 40
-        ? nowIndex < maxIndex
-          ? nowIndex += 1
-          : maxIndex
-        : nowIndex > 0
-          ? nowIndex -= 1
-          : 0
 
-      /**
-       * 處理上下鍵連動scroll 區塊
-       */
-      const resultListPx: number = this.resultList.clientHeight
-      // 如果有查詢結果
-      if (!!resultListPx) {
-        const resultListStyle =
-          this.resultList.currentStyle || window.getComputedStyle(this.resultList)
-        const paddingHeight =
-          parseFloat(resultListStyle.paddingTop) + parseFloat(resultListStyle.paddingBottom)
-        const resultViewHeight = resultListPx - paddingHeight
-        // 實際內容 Height
-        const resultContentPx = this.resultContent.clientHeight
-        // 是否需要 scroll
-        const needScroll = !!(resultContentPx > resultViewHeight)
-        if (needScroll) {
-          // 每個 li Height
-          const scrollPx = this.resultItem.clientHeight
-          this.resultList.scrollTop = scrollPx * nowIndex
-        }
-      }
-
-      this.setState({
-        keyboardSelect: nextIndex,
-      })
+    /** 按下enter */
+    if (e.keyCode === 13) {
+      return actionOnPressEnter(this.state) && this.setValue(actionOnPressEnter(this.state))
     }
+
+    /** 上下鍵計算index 區塊 */
+    const indexObj = actionGetNextIndex(this.state, e.keyCode)
+    const { nextIndex, nowIndex } = indexObj
+
+    /** 是否需要滾動 */
+    const needScroll = actionNeedScroll(this.resultList, this.resultContent)
+    if (needScroll) {
+      const scrollPx = actionGetScrollTop(this.resultItem, nowIndex)
+      this.resultList.scrollTop = scrollPx
+    }
+    
+    this.setState({
+      keyboardSelect: nextIndex,
+    })
   }
 
   /** 選定選項後行為 */

@@ -3,6 +3,7 @@ import * as React from 'react'
 import classNames from 'classnames'
 import {
   actionInitState,
+  actionInitProps,
   receiveUpdateState,
   actionSearchResult,
   actionOnPressEnter,
@@ -43,26 +44,7 @@ type State = {
 }
 
 class AutoComplete extends React.Component<Props, State> {
-  static defaultProps = {
-    type: 'autocomplete',
-    disabled: false,
-    clickReset: false,
-    emptyText: '查無結果',
-    placeholder: '請搜尋想找的項目',
-    filterKey: 'name',
-    searchAddon: <span className="defaultSearch">&#9906;</span>,
-    autoFocus: false,
-    setValue: true,
-    keys: null,
-    data: [
-      { name: 'apple', fruit: '蘋果' },
-      { name: 'banana', fruit: '香蕉' }
-    ],
-    lastUpdate: Date.now(),
-    onChange: (value: string | number) => {
-      console.log(`callback value is ${value}`)
-    },
-  };
+  static defaultProps = actionInitProps();
   constructor(props: Props) {
     super(props)
     this.state = actionInitState()

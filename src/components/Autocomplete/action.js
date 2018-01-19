@@ -1,3 +1,4 @@
+import * as React from 'react'
 /** return init state */
 export function actionInitState() {
   return ({
@@ -8,11 +9,54 @@ export function actionInitState() {
   })
 }
 
+/** return init props */
+export function actionInitProps(){
+  return ({
+    type: 'autocomplete',
+    disabled: false,
+    clickReset: false,
+    emptyText: '查無結果',
+    placeholder: '請搜尋想找的項目',
+    filterKey: 'name',
+    searchAddon: <span className="defaultSearch">&#9906;</span>,
+    autoFocus: false,
+    setValue: true,
+    keys: null,
+    data: [
+      { name: 'apple', fruit: '蘋果' },
+      { name: 'banana', fruit: '香蕉' }
+    ],
+    lastUpdate: Date.now(),
+    onChange: (value: string | number) => {
+      console.log(`callback value is ${value}`)
+    },
+  })
+}
+
 /** propsUpdate return State */
 export function receiveUpdateState(props) {
   return {
     keyword: '',
     result: props.data,
+  }
+}
+
+/** 關鍵字搜尋結果 */
+export function actionSearchResult(props, state) {
+  const { data, filterKey, type } = props
+  let active = null // 鍵盤輸入的預設key
+  const result = state.keyword.trim().length && type === 'autocomplete'
+    ? Object.keys(data).reduce((resultObj, key) => {
+      if (data[key][filterKey].toUpperCase().indexOf(state.keyword.trim().toUpperCase()) > -1) {
+        resultObj[key] = data[key]
+        active = 0
+      }
+      return resultObj
+    }, {})
+    : data
+  return {
+    result: result,
+    keyboardSelect: active,
   }
 }
 
@@ -68,25 +112,6 @@ export function actionNeedScroll(resultList, resultContent) {
 export function actionGetScrollTop(resultItem, nowIndex) {
   const scrollPx = resultItem.clientHeight  * nowIndex
   return scrollPx
-}
-
-/** 關鍵字搜尋結果 */
-export function actionSearchResult(props, state) {
-  const { data, filterKey, type } = props
-  let active = null // 鍵盤輸入的預設key
-  const result = state.keyword.trim().length && type === 'autocomplete'
-    ? Object.keys(data).reduce((resultObj, key) => {
-      if (data[key][filterKey].toUpperCase().indexOf(state.keyword.trim().toUpperCase()) > -1) {
-        resultObj[key] = data[key]
-        active = 0
-      }
-      return resultObj
-    }, {})
-    : data
-  return {
-    result: result,
-    keyboardSelect: active,
-  }
 }
 
 /** 滑鼠hover 時 */

@@ -1,30 +1,51 @@
 // @flow
 import * as React from 'react'
 import classNames from 'classnames'
-import { actionSearchResult, actionSetIndex, actionSetValue } from './action'
+import {
+  actionInitState,
+  receiveUpdateState,
+  actionSearchResult,
+  actionSetIndex,
+  actionSetValue,
+  actionOutPutValue,
+  actionHandleChange,
+  actionToggleVisible
+} from './action'
+
 import './../style.css'
 
+/**
+ * 資料來源邏輯
+ * 資料從外部props.data 進來component
+ * willmount 時,         result = props.data (改變控制在外部)
+ * 輸入keyword 時有結果,   result = props.data.reduce indexOf 結果 (因為無副作用,故變成控制在內部)
+ * 輸入keyword 時無結果,   result = props.data (又變成外部連動內部)
+ * propsUpdate 改變時,    result = nextProps.data  (外部連動改變內部)
+ * 雖然操作起來好像沒問題, 但改天需拆分開, receive 去 deep equal 總覺得有點多餘
+ */
+
 type Props = {
-  type: string,             // 可為 autocomplete 或 dropdown
-  disabled: boolean,        // 是否 disabled
-  clickReset: boolean,      // 每次click 時,是否自動reset velue
-  className: ?string,       // 最外層預設.rj_autocompleteContent, 額外自訂className
-  emptyText: string,        // 查無結果時字串
-  placeholder: string,      // 自定義placeholder
-  filterKey: string,        // 搜尋依照哪個key值
-  searchAddon: any,         // 前置 icon (autocomplete) 或 後置icon (dropdown)
-  autoFocus: boolean,       // 是否autoFocus
-  setValue: boolean,        // 選定值後是否帶入input
-  keys: ?string,            // 回傳依照obj下哪個key 值, 若為null 則預設直接回傳object 本身key值
-  data: any,                // 主要資料來源,支援Object 或 Array
-  onChange: string | number,// 選定之後的callback
+  type: string,                   // 可為 autocomplete 或 dropdown
+  disabled: boolean,              // 是否 disabled
+  clickReset: boolean,            // 每次click 時,是否自動reset velue
+  className: ?string,             // 最外層預設.rj_autocompleteContent, 額外自訂className
+  emptyText: string,              // 查無結果時字串
+  placeholder: string,            // 自定義placeholder
+  filterKey: string,              // 搜尋依照哪個key值
+  searchAddon: any,               // 前置 icon (autocomplete) 或 後置icon (dropdown)
+  autoFocus: boolean,             // 是否autoFocus
+  setValue: boolean,              // 選定值後是否帶入input
+  keys: ?string,                  // 回傳依照obj下哪個key 值, 若為null 則預設直接回傳object 本身key值
+  data: any,                      // 主要資料來源,支援Object 或 Array
+  propsUpdate: number,            // 外部更新內部使用的 Date.now()
+  onChange: string | number,      // 選定之後的callback
 }
 
 type State = {
-  listVisible: boolean,
-  keyword: string,
-  result: any,
-  keyboardSelect: number | null,
+  listVisible: boolean,           // 是否顯示列表
+  keyword: string,                // 當下input value
+  result: any,                    // indexof 後的結果
+  keyboardSelect: number | null,  // 目前選項在第幾個
 }
 
 class AutoComplete extends React.Component<Props, State> {
@@ -43,85 +64,68 @@ class AutoComplete extends React.Component<Props, State> {
       { name: 'apple', fruit: '蘋果' },
       { name: 'banana', fruit: '香蕉' }
     ],
+    lastUpdate: Date.now(),
     onChange: (value: string | number) => {
       console.log(`callback value is ${value}`)
     },
   };
   constructor(props: Props) {
     super(props)
-    this.setValue = this.setValue.bind(this)
-    this.state = {
-      listVisible: false,
-      keyword: '',
-      result: {},
-      keyboardSelect: null,
-    }
+    this.state = actionInitState()
   }
   componentWillMount() {
     this.searchResult()
   }
   componentWillReceiveProps(nextProps: Props) {
-    if (JSON.stringify(this.props.data) !== JSON.stringify(nextProps.data)) {
-      this.setState({
-        result: nextProps.data,
-      })
+    if (this.props.propsUpdate !== nextProps.propsUpdate) {
+      //如果propsUpdate 更新 
+      const newState = receiveUpdateState(nextProps)
+      this.setState(newState)
     }
   }
-  /**
-   * 點擊input 顯示下拉項目
-   */
+
+  /** 外部除非更新propsUpdate,不然不影響內部 */
+  shouldComponentUpdate(nextProps: Props, nextState: State) {
+    const stateUpdate = this.state !== nextState
+    const propsUpdate = this.props.propsUpdate !== nextProps.propsUpdate
+    return stateUpdate || propsUpdate
+  }
+
+  /** 點擊input 顯示下拉項目 */
   toggleVisible = () => {
     if (!this.state.listVisible && !this.props.disabled) {
-      const defaultClickSetting = this.props.clickReset ? {
-        keyword: "",
-        result: this.props.data,
-      } : {}
-
-      this.setState({
-        ...defaultClickSetting,
-        listVisible: !this.state.listVisible
-      }, () => {
+      const newState = actionToggleVisible(this.props, this.state)
+      this.setState(newState, () => {
         this.resultList.scrollTop = 0
       })
     }
   }
 
-  /**
-   * 輸入關鍵字時的onChange
-   */
-  handleChange = (newState: State) => {
-    this.setState({
-      ...this.state,
-      ...newState,
-    }, this.searchResult)
+  /** 輸入關鍵字時的onChange */
+  handleChange = (nextState: State) => {
+    const newState = actionHandleChange(this.state, nextState)
+    this.setState(newState,
+      this.searchResult)
   }
 
-  /**
-   *  關鍵字搜尋結果
-   */
+  /** 關鍵字搜尋結果 */
   searchResult = () => {
     const newState = actionSearchResult(this.props, this.state)
     this.setState(newState)
   }
 
-  /**
-   *  滑鼠hover 時
-   */
-  setIndex = (index) => {
+  /** 滑鼠hover 時 */
+  setIndex = (index: number) => {
     const newState = actionSetIndex(index)
     this.setState(newState)
   }
 
-  /**
-   *  鍵盤控制區塊
-   */
+  /** 鍵盤控制區塊 */
   indexSelected = (e) => {
-    e.preventDefault()
-
     if (e.keyCode !== 40 && e.keyCode !== 38 && e.keyCode !== 13) {
       return false
     }
-
+    e.preventDefault()
     const { result, keyboardSelect } = this.state
     /**
      *  按下 Enter 邏輯
@@ -172,25 +176,11 @@ class AutoComplete extends React.Component<Props, State> {
     }
   }
 
-  /**
-   * 選定選項後行為
-   */
-  setValue(value) {
+  /** 選定選項後行為 */
+  setValue = (value: string) => {
     const newState = actionSetValue(this.props, this.state, value)
-    // 當按下選項發生什麼事, 是否要寫入keyword
-    const {
-      data,
-      setValue,
-      filterKey,
-      keys,
-    } = this.props
-
-    const { result } = this.state
-    const outPutValue = !!keys ? result[value][keys] : value
-    this.setState({
-      keyword: setValue ? data[value][filterKey] : '',
-      listVisible: false,
-    }, () => {
+    const outPutValue = actionOutPutValue(this.props, this.state, value)
+    this.setState(newState, () => {
       this.searchResult()
       this.props.onChange(outPutValue)
     })
@@ -208,7 +198,7 @@ class AutoComplete extends React.Component<Props, State> {
     } = this.props
     const { result } = this.state
     return (
-      <div className={classNames('rj_autocompleteContent', { [className]: typeof className !== 'undefined' })}>
+      <div className={classNames('rj_autocompleteContent', { [className]: !Object.is(className, undefined) })}>
         <div className={classNames("icon_addon fw-900", { hidden: type === 'dropdown' })}>
           {searchAddon}
         </div>
@@ -219,7 +209,7 @@ class AutoComplete extends React.Component<Props, State> {
           value={this.state.keyword}
           readOnly={type === 'dropdown'}
           disabled={disabled}
-          onChange={e => this.handleChange({ keyword: e.target.value })}
+          onChange={e => this.handleChange({ keyword: e.target.value, listVisible: true })}
           onKeyDown={this.indexSelected}
           className="rj_autocomplete"
           placeholder={placeholder} />

@@ -6,6 +6,7 @@ export default (props) => {
     <Autocomplete
       {...props}
       type="dropdown"
+      clickReset={true}
       searchAddon={<span className="defaultTriangle"></span>} />
   )
 }

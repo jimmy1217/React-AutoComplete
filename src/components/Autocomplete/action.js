@@ -10,7 +10,7 @@ export function actionInitState() {
 }
 
 /** return init props */
-export function actionInitProps(){
+export function actionInitProps() {
   return ({
     type: 'autocomplete',
     disabled: false,
@@ -45,15 +45,13 @@ export function receiveUpdateState(props) {
 export function actionSearchResult(props, state) {
   const { data, filterKey, type } = props
   let active = null // 鍵盤輸入的預設key
-  const result = state.keyword.trim().length && type === 'autocomplete'
-    ? Object.keys(data).reduce((resultObj, key) => {
-      if (data[key][filterKey].toUpperCase().indexOf(state.keyword.trim().toUpperCase()) > -1) {
-        resultObj[key] = data[key]
-        active = 0
-      }
-      return resultObj
-    }, {})
-    : data
+  const result = Object.keys(data).reduce((resultObj, key) => {
+    if (data[key][filterKey].toUpperCase().indexOf(state.keyword.trim().toUpperCase()) > -1) {
+      resultObj[key] = data[key]
+      active = 0
+    }
+    return resultObj
+  }, {})
   return {
     result: result,
     keyboardSelect: active,
@@ -110,7 +108,7 @@ export function actionNeedScroll(resultList, resultContent) {
 
 /** Dom - 計算scrolltop */
 export function actionGetScrollTop(resultItem, nowIndex) {
-  const scrollPx = resultItem.clientHeight  * nowIndex
+  const scrollPx = resultItem.clientHeight * nowIndex
   return scrollPx
 }
 

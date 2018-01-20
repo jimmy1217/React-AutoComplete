@@ -42,8 +42,8 @@ test('改變props 資料狀態 - receiveUpdateState', () => {
 describe('搜尋結果測試', () => {
   const initState = actionInitState()
   const initProps = actionInitProps()
-  test('下拉選單模式 - actionSearchResult', () => {
-    const thisState = { ...initState, keyword: '222' }
+  test('下拉選單模式 - 有項目 - actionSearchResult', () => {
+    const thisState = { ...initState, keyword: '' }
     const thisProps = {
       ...initProps, data: [
         { name: 'apple', fruit: '蘋果' },
@@ -52,10 +52,12 @@ describe('搜尋結果測試', () => {
       type: 'dropdown'
     }
     const newState = actionSearchResult(thisProps, thisState)
-    //這邊再確認
     expect(newState).toEqual({
-      "keyboardSelect": null,
-      "result": thisProps.data
+      "keyboardSelect": 0,
+      "result": {
+        "0": { "name": "apple", "fruit": "蘋果" },
+        "1": { "name": "banana", "fruit": "香蕉" }
+      }
     })
   })
   test('無關鍵字 - actionSearchResult', () => {
@@ -68,8 +70,11 @@ describe('搜尋結果測試', () => {
     }
     const newState = actionSearchResult(thisProps, thisState)
     expect(newState).toEqual({
-      "keyboardSelect": null,
-      "result": thisProps.data
+      "keyboardSelect": 0,
+      "result": {
+        "0": { "name": "apple", "fruit": "蘋果" },
+        "1": { "name": "banana", "fruit": "香蕉" }
+      }
     })
   })
   test('多筆結果 - actionSearchResult', () => {

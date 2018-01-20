@@ -28,10 +28,10 @@
 
 
 ## 開發方式
+>**```yarn install```**<br/>
 
 >**本機開發 :**  
 >**```yarn w```**<br/>
->**```yarn install```**<br/>
 >**預設於localhost:8080 開啟HMR**
 
 >**本機部署 :**  

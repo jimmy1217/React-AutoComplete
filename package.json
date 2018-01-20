@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "b": "./node_modules/.bin/http-server -g -o",
-    "w": "webpack-dev-server --inline --hot --config ./webpack.config.dev.js",
-    "p": "webpack --profile  --progress --config ./webpack.production.config.js",
+    "w": "./node_modules/.bin/webpack-dev-server --inline --hot --config ./webpack.config.dev.js",
+    "p": "./node_modules/.bin/webpack --profile  --progress --config ./webpack.production.config.js",
     "gh": "git subtree push --prefix public origin gh-pages",
     "build": "rm -rf ./lib && NODE_ENV=commonjs ./node_modules/.bin/babel ./src/components/ -d lib && ./node_modules/.bin/postcss src/components/*.css -o lib/style.css",
     "test": "jest"

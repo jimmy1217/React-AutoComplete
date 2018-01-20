@@ -25,16 +25,24 @@ test('初始化 state - actionInitState', () => {
 })
 
 test('改變props 資料狀態 - receiveUpdateState', () => {
+  const initProps = actionInitProps()
   const nextProps = {
-    data: [{ 'test1': 'items' }, { 'test2': 'items2' }]
+    ...initProps,
+    data: [
+      { name: 'apple', fruit: '蘋果' },
+      { name: 'banana', fruit: '香蕉' }
+    ]
   }
   const initState = actionInitState()
-  const thisState = { ...initState, keyword: 'apple', listVisible: true }
+  const thisState = { ...initState, keyword: '32132' }
   const nextState = receiveUpdateState(nextProps)
   expect({ ...thisState, ...nextState }).toEqual({
-    listVisible: true,
+    listVisible: false,
     keyword: '',
-    result: [{ 'test1': 'items' }, { 'test2': 'items2' }],
+    result: {
+      "0": { "name": "apple", "fruit": "蘋果" },
+      "1": { "name": "banana", "fruit": "香蕉" }
+    },
     keyboardSelect: null,
   })
 })
@@ -58,6 +66,18 @@ describe('搜尋結果測試', () => {
         "0": { "name": "apple", "fruit": "蘋果" },
         "1": { "name": "banana", "fruit": "香蕉" }
       }
+    })
+  })
+  test('下拉選單模式 - 無項目 - actionSearchResult', () => {
+    const thisState = { ...initState, keyword: '' }
+    const thisProps = {
+      ...initProps, data: [],
+      type: 'dropdown'
+    }
+    const newState = actionSearchResult(thisProps, thisState)
+    expect(newState).toEqual({
+      "keyboardSelect": null,
+      "result": {}
     })
   })
   test('無關鍵字 - actionSearchResult', () => {
@@ -144,27 +164,30 @@ describe('搜尋結果測試', () => {
 
 describe('鍵盤控制', () => {
   const initState = actionInitState()
-  test('按下Enter- 有結果狀態 - actionOnPressEnter', () => {
-    const thisState = {
-      ...initState, "keyboardSelect": 1,
-      "result": {
-        "0": { "name": "apple", "fruit": "蘋果" },
-        "1": { "name": "banana", "fruit": "香蕉" }
+  describe('Enter 控制', () => {
+    test('按下Enter- 有結果狀態 - actionOnPressEnter', () => {
+      const thisState = {
+        ...initState, "keyboardSelect": 1,
+        "result": {
+          "0": { "name": "apple", "fruit": "蘋果" },
+          "1": { "name": "banana", "fruit": "香蕉" }
+        }
       }
-    }
-    expect(actionOnPressEnter(thisState)).toBe("1")
-  })
-  test('按下Enter- 無結果狀態 - actionOnPressEnter', () => {
-    const thisState = {
-      ...initState, "keyboardSelect": null,
-      "result": {
-        "0": { "name": "apple", "fruit": "蘋果" },
-        "1": { "name": "banana", "fruit": "香蕉" }
+      expect(actionOnPressEnter(thisState)).toBe("1")
+    })
+    test('按下Enter- 無結果狀態 - actionOnPressEnter', () => {
+      const thisState = {
+        ...initState, "keyboardSelect": null,
+        "result": {
+          "0": { "name": "apple", "fruit": "蘋果" },
+          "1": { "name": "banana", "fruit": "香蕉" }
+        }
       }
-    }
-    expect(actionOnPressEnter(thisState)).toBe(false)
+      expect(actionOnPressEnter(thisState)).toBe(false)
+    })
   })
-  describe('上下控制', () => {
+
+  describe('上下鍵 控制', () => {
     const initState = actionInitState()
     const thisState = {
       ...initState,
@@ -214,5 +237,23 @@ describe('鍵盤控制', () => {
       expect(nowIndex).toBe(-1)
     })
   })
+})
+
+describe('滑鼠控制', () => {
+  test('滑鼠hover Index - actionSetIndex', () => {
+    const initState = actionInitState();
+    const newIndex = actionSetIndex(2);
+    const thisState = { ...initState, ...newIndex, keyword: '222' }
+    expect(thisState).toEqual({
+      listVisible: false,
+      keyword: '222',
+      result: {},
+      keyboardSelect: 2,
+    })
+  })
+})
+
+describe('Output Value 測試',()=>{
+  
 
 })

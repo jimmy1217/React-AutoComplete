@@ -37,21 +37,26 @@ export function actionInitProps() {
 export function receiveUpdateState(props) {
   return {
     keyword: '',
-    result: props.data,
+    result: actionReturnResult(props, ''),
   }
+}
+
+/** 只針對result資料做處理 */
+export function actionReturnResult(props, keyword) {
+  const { data, filterKey, type } = props
+  return Object.keys(data).reduce((resultObj, key) => {
+    if (data[key][filterKey].toUpperCase().indexOf(keyword.trim().toUpperCase()) > -1) {
+      resultObj[key] = data[key]
+    }
+    return resultObj
+  }, {});
+
 }
 
 /** 關鍵字搜尋結果 */
 export function actionSearchResult(props, state) {
-  const { data, filterKey, type } = props
-  let active = null // 鍵盤輸入的預設key
-  const result = Object.keys(data).reduce((resultObj, key) => {
-    if (data[key][filterKey].toUpperCase().indexOf(state.keyword.trim().toUpperCase()) > -1) {
-      resultObj[key] = data[key]
-      active = 0
-    }
-    return resultObj
-  }, {})
+  const result = actionReturnResult(props, state.keyword)
+  const active = Object.keys(result).length ? 0 : null // 鍵盤輸入的預設key
   return {
     result: result,
     keyboardSelect: active,
@@ -158,7 +163,7 @@ export function actionOutPutValue(props, state, value) {
 export function actionToggleVisible(props, state) {
   const defaultClickSetting = props.clickReset ? {
     keyword: "",
-    result: props.data,
+    result: actionReturnResult(props, ''),
   } : {}
 
   return {

@@ -1,6 +1,6 @@
 {
   "name": "preact-autocomplete",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "react or preact autocomplte component",
   "main": "lib/index.js",
   "files": [
@@ -75,7 +75,10 @@
     "setupFiles": [
       "./test-env.js"
     ],
-    "testPathIgnorePatterns" : ["<rootDir>/node_modules/", "<rootDir>/lib/" ]
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/lib/"
+    ]
   },
   "author": "jimmy1217",
   "license": "ISC",

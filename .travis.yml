@@ -18,10 +18,10 @@ script:
   # Set Git config
   - git config --global user.name "$GIT_NAME"
   - git config --global user.email "$GIT_EMAIL"
-  - git config --global push.default simple
+  # - git config --global push.default simple
   - yarn p
   - git add -A .
   - MESSAGE=`date +\ %Y-%m-%d\ %H:%M:%S`
   - git commit -m "Site updated:$MESSAGE"
-  - git push --quiet
-  - git subtree push --prefix public origin gh-pages https://$GH_TOKEN@github.com/jimmy1217/React-AutoComplete
+  - git push origin master https://$GH_TOKEN@github.com/jimmy1217/React-AutoComplete --quiet
+  # - git subtree push --prefix public origin gh-pages https://$GH_TOKEN@github.com/jimmy1217/React-AutoComplete

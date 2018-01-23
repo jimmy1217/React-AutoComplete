@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "files": [
     "*.md",
-    "lib"
+    "lib",
+    "src"
   ],
   "scripts": {
     "b": "./node_modules/.bin/http-server -g -o",

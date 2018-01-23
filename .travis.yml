@@ -8,16 +8,16 @@ env:
 install:
 - yarn install
 
-# before_script:
-# - yarn p
+before_script:
+- yarn p
 
-script:
-  # Set Git config
-  - git config --global user.name "$GIT_NAME"
-  - git config --global user.email "$GIT_EMAIL"
-  - yarn p
-  - git add -A .
-  - MESSAGE=`date +\ %Y-%m-%d\ %H:%M:%S`
-  - git commit -m "Site updated:$MESSAGE"
-  - git push --quiet
-  - yarn gh
+# script:
+#   # Set Git config
+#   - git config --global user.name "$GIT_NAME"
+#   - git config --global user.email "$GIT_EMAIL"
+#   - yarn p
+#   - git add -A .
+#   - MESSAGE=`date +\ %Y-%m-%d\ %H:%M:%S`
+#   - git commit -m "Site updated:$MESSAGE"
+#   - git push --quiet
+#   - yarn gh

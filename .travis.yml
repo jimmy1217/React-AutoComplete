@@ -18,10 +18,15 @@ script:
   # Set Git config
   - git config --global user.name "$GIT_NAME"
   - git config --global user.email "$GIT_EMAIL"
+  # Set default push only this branch
   - git config --global push.default simple
+  # Clone project through ssh 
+  - git clone --depth 1 --branch 2018travis https://$GH_TOKEN@github.com/$GIT_NAME/React-AutoComplete public
+  # Print remote repository
+  - git remote -v
   - yarn p
   - git add -A .
   - MESSAGE=`date +\ %Y-%m-%d\ %H:%M:%S`
   - git commit -m "Site updated:$MESSAGE"
-  - git push origin 2018travis https://$GH_TOKEN@github.com/jimmy1217/React-AutoComplete --quiet
+  - git push origin 2018travis https://$GH_TOKEN@github.com/$GIT_NAME/React-AutoComplete --quiet
   # - git subtree push --prefix public origin gh-pages https://$GH_TOKEN@github.com/jimmy1217/React-AutoComplete

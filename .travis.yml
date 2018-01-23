@@ -23,5 +23,5 @@ script:
   - git add -A .
   - MESSAGE=`date +\ %Y-%m-%d\ %H:%M:%S`
   - git commit -m "Site updated:$MESSAGE"
-  - git push origin 2018travis https://$GH_TOKEN@github.com/$GIT_NAME/React-AutoComplete --quiet
+  - git push origin 2018travis https://$GH_TOKEN@github.com/jimmy1217/React-AutoComplete --quiet
   # - git subtree push --prefix public origin gh-pages https://$GH_TOKEN@github.com/jimmy1217/React-AutoComplete

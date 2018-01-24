@@ -11,6 +11,9 @@ before_install:
 install:
 - yarn install
 
+before_script:
+- yarn p
+
 deploy:
   provider: pages
   local-dir: public
@@ -20,8 +23,7 @@ deploy:
   on:
     branch: master
 
-# before_script:
-# - yarn p
+
 
 # script:
   # Set Git config

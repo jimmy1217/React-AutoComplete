@@ -169,7 +169,7 @@ const Root = () => {
             <Autocomplete 
                 data={fakeDataArr1}
                 keys="fruit"
-                placeholder="Search {Object.fruit}, Output {Object.name}"
+                placeholder="Search {Object.name}, Output {Object.fruit}"
                 onChange={ val =>{\`alert(Output is \${val}\`)}}
             />
         </div>

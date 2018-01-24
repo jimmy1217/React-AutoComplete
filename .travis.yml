@@ -1,9 +1,6 @@
 language: node_js
 node_js:
 - '8'
-env:
-  global:
-    secure: UEI8Gvfjf3uoHTUqR+LuQ4fSyETn560Nch3WlVLIhsyiEKGKD9XkwffL008yGYgLNSRwUz7KxuzGwOwrWChb56d+lOMdZduTW/GrlzzIcajw3I5w/xnv4c4RAsQ67NBK8YJqpHQgDdNJhq/Yd7lMh0i3jRz/YZUC+WmXbVcSGytZU8F7EW8Ep4ZDMQliwYU0SzlZWno+toe55nUsZVHjurD7CkDQyPU9695WtL0plVsre+xbLPkOvO+Vi5S4cm96Lj7UBclJpwMJipS1j7Q+vDIPbr0G8MA5QOlz97/3ODGoAVSqPbYjD/1kKtw7aZ6t5BovShyYNBH7xbbK9jgfXzAtsUUKDI0Ov2cIKGcWU0bbFzLjwTKpf8vzDqT/84PnQJAa2RxhU52y2clYUrfXECmoP7QRHYQJiuft8xWGHjt/neoctUffd+cEncExx/mCJ7lAP91gILWFQFbLOc8SIwXP+UE1uqkelWoZklf/FSWoK47HYhxpIe1tiLRcj5GyXZGPho4Uakibp5fzHKFPmD6VSq/O8edjzNf1oCUbcFkfhdQQruZO0LHrJIm5h+ANyU3YZm+9xrPPXpEOgZ7n3IKx2zmfZ5cpR3WpYuZi5yNSgb4QaW5iJkZ6UxE5NvlzYCeOrRDAlb9sSXgKiVICcouoJvTShxFY48oYGfOn5RU=
 
 before_install:
   - export TZ=Asia/Taipei
@@ -18,27 +15,8 @@ deploy:
   provider: pages
   local-dir: public
   skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  github-token: $GITHUB_TOKEN  
   keep-history: true
   on:
     branch: master
 
-
-
-# script:
-  # Set Git config
-  # - git config --global user.name "$GIT_NAME"
-  # - git config --global user.email "$GIT_EMAIL"
-  # Set default push only this branch
-  # - git config --global push.default simple
-  # Clone project through ssh 
-  # - git clone --depth 1 --branch 2018travis https://$GH_TOKEN@github.com/$GIT_NAME/React-AutoComplete public
-  # Print remote repository
-  # - git remote -v
-  # - yarn p
-  # - git add -A .
-  # - MESSAGE=`date +\ %Y-%m-%d\ %H:%M:%S`
-  # - git commit -m "Site updated:$MESSAGE"
-  # - git push origin 2018travis https://$GH_TOKEN@github.com/$GIT_NAME/React-AutoComplete --quiet
-  # - git subtree push --prefix public origin gh-pages https://$GH_TOKEN@github.com/jimmy1217/React-AutoComplete
-  # test

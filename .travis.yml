@@ -8,8 +8,12 @@ install:
 before_script:
 # build demo page
 - yarn p
-# build source
+
+script:
+# build lib
 - yarn build
+# test
+- yarn test
 
 deploy:
   provider: pages

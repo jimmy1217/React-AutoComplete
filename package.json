@@ -21,7 +21,11 @@
     "url": "git+https://github.com/jimmy1217/React-AutoComplete.git"
   },
   "keywords": [
-    "autocomplte"
+    "react",
+    "autocomplete",
+    "react autocomplete",
+    "preact",
+    "component"
   ],
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0 || ^16.0.0",

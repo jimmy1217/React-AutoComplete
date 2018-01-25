@@ -6,7 +6,10 @@ install:
 - yarn install
 
 before_script:
+# build demo page
 - yarn p
+# build source
+- yarn build
 
 deploy:
   provider: pages

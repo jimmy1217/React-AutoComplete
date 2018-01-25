@@ -18,7 +18,6 @@ script:
 - yarn build
 # test
 - yarn test
-- yarn coveralls
 
 deploy:
   provider: pages

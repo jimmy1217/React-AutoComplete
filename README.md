@@ -1,4 +1,4 @@
-# Preact-autocomplete [![npm version](https://img.shields.io/npm/v/preact-autocomplete.svg?style=flat-square)](https://www.npmjs.com/package/preact-autocomplete) [![Build Status](https://travis-ci.org/jimmy1217/React-AutoComplete.svg?branch=master)](https://travis-ci.org/jimmy1217/React-AutoComplete)
+# Preact-autocomplete [![npm version](https://img.shields.io/npm/v/preact-autocomplete.svg?style=flat-square)](https://www.npmjs.com/package/preact-autocomplete) [![Build Status](https://travis-ci.org/jimmy1217/React-AutoComplete.svg?branch=master)](https://travis-ci.org/jimmy1217/React-AutoComplete) [![Coverage Status](https://coveralls.io/repos/github/jimmy1217/React-AutoComplete/badge.svg?branch=master)](https://coveralls.io/github/jimmy1217/React-AutoComplete?branch=master)
 A React Autocomplete Component for Input
 
 
@@ -51,7 +51,7 @@ A React Autocomplete Component for Input
 >```yarn test```<br/>
 
 ---
-# Preact-autocomplete [![npm version](https://img.shields.io/npm/v/preact-autocomplete.svg?style=flat-square)](https://www.npmjs.com/package/preact-autocomplete) [![Build Status](https://travis-ci.org/jimmy1217/React-AutoComplete.svg?branch=master)](https://travis-ci.org/jimmy1217/React-AutoComplete)
+# Preact-autocomplete [![npm version](https://img.shields.io/npm/v/preact-autocomplete.svg?style=flat-square)](https://www.npmjs.com/package/preact-autocomplete) [![Build Status](https://travis-ci.org/jimmy1217/React-AutoComplete.svg?branch=master)](https://travis-ci.org/jimmy1217/React-AutoComplete) [![Coverage Status](https://coveralls.io/repos/github/jimmy1217/React-AutoComplete/badge.svg?branch=master)](https://coveralls.io/github/jimmy1217/React-AutoComplete?branch=master)
 一個使用於 autocomplete 或 dropdown 需求的 React component
 
 

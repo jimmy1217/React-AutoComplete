@@ -1,4 +1,57 @@
 # Preact-autocomplete [![npm version](https://img.shields.io/npm/v/preact-autocomplete.svg?style=flat-square)](https://www.npmjs.com/package/preact-autocomplete) [![Build Status](https://travis-ci.org/jimmy1217/React-AutoComplete.svg?branch=master)](https://travis-ci.org/jimmy1217/React-AutoComplete)
+A React Autocomplete Component for Input
+
+
+
+## Installation 
+
+
+>```yarn add preact-autocomplete```<br/>
+>or<br/>
+>```npm install preact-autocomplete --save```<br/>
+
+
+## Demo 
+>**[Online example](https://jimmy1217.github.io/React-AutoComplete/)**
+
+<img src="https://giant.gfycat.com/DapperTenderHogget.gif" width="258" >
+
+
+## Features 
+>- Filter data of object or array 
+>- Customize filter key
+>- Customize output key
+>- Keyboard control
+>- Auto reset value 
+>- onChange callback
+>- Customize empty message
+>- Dropdown mode
+
+
+
+## Deploy
+>**```yarn install```**<br/>
+>or<br/>
+>**```npm install```**<br/>
+
+>**local deploy :**  
+>```yarn w```<br/>
+>result is served from ```localhost:8080```
+
+>**local build :**  
+>```yarn build```<br/>
+>output to ```/lib/*```
+
+>**Demo deploy :**  
+>```yarn p```<br/>
+>output to ```public/*```
+
+>**local test :**  
+>```npm insall jest -g```<br/>
+>```yarn test```<br/>
+
+---
+# Preact-autocomplete [![npm version](https://img.shields.io/npm/v/preact-autocomplete.svg?style=flat-square)](https://www.npmjs.com/package/preact-autocomplete) [![Build Status](https://travis-ci.org/jimmy1217/React-AutoComplete.svg?branch=master)](https://travis-ci.org/jimmy1217/React-AutoComplete)
 一個使用於 autocomplete 或 dropdown 需求的 React component
 
 
@@ -31,17 +84,17 @@
 >**```yarn install```**<br/>
 
 >**本機開發 :**  
->**```yarn w```**<br/>
->**預設於localhost:8080 開啟HMR**
+>```yarn w```<br/>
+>預設於```localhost:8080``` 開啟HMR
 
 >**本機部署 :**  
->**```yarn build```**<br/>
->**預設透過babel 放置於/lib/\* 下**
+>```yarn build```<br/>
+>預設透過babel 放置於```/lib/*``` 下
 
 >**Demo部署 :**  
->**```yarn p```**<br/>
->**預設產出至 public/\***
+>```yarn p```<br/>
+>預設產出至 ```public/*```
 
 >**本機測試 :**  
->**```npm insall jest -g```**<br/>
->**```yarn test```**<br/>
+>```npm insall jest -g```<br/>
+>```yarn test```<br/>

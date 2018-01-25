@@ -15,7 +15,7 @@
     "gh": "git subtree push --prefix public origin gh-pages",
     "build": "rm -rf ./lib && NODE_ENV=commonjs ./node_modules/.bin/babel ./src/components/ -d lib && ./node_modules/.bin/postcss src/components/*.css -o lib/style.css",
     "test": "jest",
-    "coveralls": "jest coverage"
+    "coveralls": "jest --coverage | coveralls"
   },
   "repository": {
     "type": "git",

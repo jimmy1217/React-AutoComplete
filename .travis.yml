@@ -2,6 +2,10 @@ language: node_js
 node_js:
 - '8'
 
+env:
+  global:
+    secure: UEI8Gvfjf3uoHTUqR+LuQ4fSyETn560Nch3WlVLIhsyiEKGKD9XkwffL008yGYgLNSRwUz7KxuzGwOwrWChb56d+lOMdZduTW/GrlzzIcajw3I5w/xnv4c4RAsQ67NBK8YJqpHQgDdNJhq/Yd7lMh0i3jRz/YZUC+WmXbVcSGytZU8F7EW8Ep4ZDMQliwYU0SzlZWno+toe55nUsZVHjurD7CkDQyPU9695WtL0plVsre+xbLPkOvO+Vi5S4cm96Lj7UBclJpwMJipS1j7Q+vDIPbr0G8MA5QOlz97/3ODGoAVSqPbYjD/1kKtw7aZ6t5BovShyYNBH7xbbK9jgfXzAtsUUKDI0Ov2cIKGcWU0bbFzLjwTKpf8vzDqT/84PnQJAa2RxhU52y2clYUrfXECmoP7QRHYQJiuft8xWGHjt/neoctUffd+cEncExx/mCJ7lAP91gILWFQFbLOc8SIwXP+UE1uqkelWoZklf/FSWoK47HYhxpIe1tiLRcj5GyXZGPho4Uakibp5fzHKFPmD6VSq/O8edjzNf1oCUbcFkfhdQQruZO0LHrJIm5h+ANyU3YZm+9xrPPXpEOgZ7n3IKx2zmfZ5cpR3WpYuZi5yNSgb4QaW5iJkZ6UxE5NvlzYCeOrRDAlb9sSXgKiVICcouoJvTShxFY48oYGfOn5RU=
+
 install:
 - yarn install
 
@@ -19,7 +23,7 @@ deploy:
   provider: pages
   local-dir: public
   skip-cleanup: true
-  github-token: $GITHUB_TOKEN  
+  github-token: $GH_TOKEN  
   keep-history: true
   verbose: true
   on:

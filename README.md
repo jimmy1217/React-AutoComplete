@@ -19,10 +19,10 @@ A React Autocomplete Component for Input
 
 ## Features 
 >- Filter data of object or array 
->- Customize filter key
->- Customize output key
+>- Customize filter value
+>- Customize output value
 >- Keyboard control
->- Auto reset value 
+>- Auto reset value (option)
 >- onChange callback
 >- Customize empty message
 >- Dropdown mode
@@ -36,7 +36,7 @@ A React Autocomplete Component for Input
 
 >**local development :**  
 >start a local development with ```yarn w```<br/>
->server on ```localhost:8080```
+>server on```localhost:8080```
 
 >**local build :**  
 >```yarn build```<br/>
@@ -72,7 +72,7 @@ A React Autocomplete Component for Input
 >- 過濾任意key 值
 >- 帶出任意key 值
 >- keyboard 選擇
->- 自動清空 
+>- 自動清空 (可選)
 >- 自訂選值後callback
 >- 自訂查無項目訊息
 >- 下拉選單模式
@@ -83,7 +83,7 @@ A React Autocomplete Component for Input
 >**```yarn install```**<br/>
 
 >**本機開發 :**  
->可以透過 ```yarn w```<br/>
+>```yarn w```<br/>
 >預設於```localhost:8080``` 開啟Hot Module Replacement
 
 >**本機部署 :**  

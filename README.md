@@ -47,7 +47,6 @@ A React Autocomplete Component for Input
 >output to ```public/*```
 
 >**local test :**  
->```npm insall jest -g```<br/>
 >```yarn test```<br/>
 
 ---
@@ -96,5 +95,4 @@ A React Autocomplete Component for Input
 >預設產出至 ```public/*```
 
 >**本機測試 :**  
->```npm insall jest -g```<br/>
 >```yarn test```<br/>

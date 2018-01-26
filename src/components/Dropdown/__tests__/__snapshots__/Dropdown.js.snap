@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render 測試 Dropdown render Snapshot 1`] = `
+<div
+  className="rj_autocompleteContent"
+>
+  <div
+    className="icon_addon fw-900 hidden"
+  >
+    <span
+      className="defaultTriangle"
+    />
+  </div>
+  <input
+    autoFocus={false}
+    className="rj_autocomplete"
+    disabled={false}
+    onChange={[Function]}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    placeholder="請搜尋想找的項目"
+    readOnly={true}
+    type="text"
+    value=""
+  />
+  <div
+    className="icon_addon fw-900 mr-10"
+  >
+    <span
+      className="defaultTriangle"
+    />
+  </div>
+  <hr />
+  <hr
+    className="focus-border"
+  />
+  <div
+    className="overlayCancel hidden"
+    onClick={[Function]}
+  />
+  <div
+    className="rj_list rj_list_hidden"
+  >
+    <ul>
+      <li
+        className="result active"
+        onClick={[Function]}
+        onMouseOver={[Function]}
+      >
+        apple
+      </li>
+      <li
+        className="result"
+        onClick={[Function]}
+        onMouseOver={[Function]}
+      >
+        banana
+      </li>
+    </ul>
+  </div>
+</div>
+`;

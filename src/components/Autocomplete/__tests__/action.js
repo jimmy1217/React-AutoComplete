@@ -12,7 +12,7 @@ import {
   actionOutPutValue,
   actionHandleChange,
   actionToggleVisible
-} from './action'
+} from './../action'
 
 test('初始化 state - actionInitState', () => {
   const initState = actionInitState()
@@ -253,7 +253,3 @@ describe('滑鼠控制', () => {
   })
 })
 
-describe('Output Value 測試',()=>{
-  
-
-})

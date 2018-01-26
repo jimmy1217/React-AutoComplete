@@ -29,14 +29,14 @@ A React Autocomplete Component for Input
 
 
 
-## Deploy
+## Development
 >**```yarn install```**<br/>
 >or<br/>
 >**```npm install```**<br/>
 
->**local deploy :**  
->```yarn w```<br/>
->result is served from ```localhost:8080```
+>**local development :**  
+>start a local development with ```yarn w```<br/>
+>server on ```localhost:8080```
 
 >**local build :**  
 >```yarn build```<br/>
@@ -83,8 +83,8 @@ A React Autocomplete Component for Input
 >**```yarn install```**<br/>
 
 >**本機開發 :**  
->```yarn w```<br/>
->預設於```localhost:8080``` 開啟HMR
+>可以透過 ```yarn w```<br/>
+>預設於```localhost:8080``` 開啟Hot Module Replacement
 
 >**本機部署 :**  
 >```yarn build```<br/>

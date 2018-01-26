@@ -66,7 +66,7 @@ class AutoComplete extends React.Component<Props, State> {
 
   /** 外部除非更新propsUpdate,不然不影響內部 */
   shouldComponentUpdate(nextProps: Props, nextState: State) {
-    const stateUpdate = this.state !== nextState
+    const stateUpdate =  !Object.is(this.state,nextState)
     const propsUpdate = this.props.propsUpdate !== nextProps.propsUpdate
     return stateUpdate || propsUpdate
   }
